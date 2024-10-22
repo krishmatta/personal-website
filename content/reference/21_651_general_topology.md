@@ -10,7 +10,7 @@ draft: false
 My notes of 21-651: General Topology in the Fall 2024 semester taught by James Cummings.
 
 
-## Review {#review}
+## Prerequisites {#prerequisites}
 
 **Definition** (Metric Space): A _metric space_ is a tuple \\[(M, d)\\] where \\[M\\] is a set and \\[d: M \times M \rightarrow \mathbb{R}\_{\geq 0}\\] is a function that satisfies the following properties:
 
@@ -95,6 +95,8 @@ Thus, we can think of a topology as an abstraction of open sets on a metric spac
 
 We call the topology on a metric space induced by the metric function the _metric topology_.
 
+**Remark**: Not every topology comes from a metric. There is a whole class of theorems related to determining whether a topology is from a metric or not.
+
 We call the topology \\[\tau = \lbrace \emptyset, X \rbrace\\] the _discrete topology_.
 
 We call the topology \\[\tau = \mathcal{P}(X)\\] the _indiscrete topology_.
@@ -117,3 +119,92 @@ From now on, we will say that a set \\[X\\] is a topological space and use \\[\t
 3.  Any finite union of closed sets is closed.
 
 **Proof**: (1) is trivial. (2) and (3) follow by De Morgan's Laws.
+
+**Remark**: In metric spaces, we have learned that for a convergent sequence of points in a closed set, the limit of the sequence is in the set. This does not hold true in general topological spaces, however.
+
+**Proposition**: Let \\[X, Y\\] be topological spaces and \\[f: X \rightarrow Y\\] a function. Then, \\[f\\] is continuous if and only if for every closed \\[F \subseteq Y\\], \\[f^{-1}[F]\\] is closed.
+
+**Proof**: We first prove the forwards direction. Assume that \\[f\\] is continuous. Let \\[F\\] be a closed subset of \\[Y\\]. Thus, \\[Y \setminus F\\] is open. Meaning that \\[f^{-1}[Y \setminus F]\\] is open. Thus, \\[f^{-1}[Y \setminus F] = X \setminus f^{-1}[F]\\] is open, and so \\[f^{-1}[F]\\] is closed, as desired.
+
+We now prove the backwards direction. Let \\[U\\] be an open subset of \\[Y\\]. Then, \\[Y \setminus U\\] is closed, so \\[f^{-1}[Y \setminus U]\\] is closed, and thus \\[f^{-1}[Y \setminus U] = X \setminus f^{-1}[U]\\] is closed. Implying that \\[f^{-1}[U]\\] is open. Since \\[U\\] is arbitrary, \\[f\\] is continuous.
+
+Not all topological spaces are made equal.
+
+**Definition** (Hausdorff): Let \\[X\\] be a topological space. We say that \\[X\\] is _Hausdorff_, or \\[T\_2\\], if for all \\[a, b \in X\\] such that \\[a \neq b\\], there exists open \\[U, V \subseteq X\\] such that \\[a \in U\\], \\[b \in V\\], and \\[U \cap V = \emptyset\\].
+
+Intuitively, a Hausdorff space is one in which we can separate any two points by open sets.
+
+**Proposition**: Let \\[M\\] be a metric space. \\[M\\] is Hausdorff.
+
+**Proof**: Consider \\[a, b \in M\\]. Let \\[\epsilon = d(a, b) / 2\\]. Let \\[U = B\_{\epsilon}(a)\\] and \\[V = B\_{\epsilon}(b)\\]. Clearly, \\[U\\] and \\[V\\] are open. Furthermore, \\[a \in U\\] and \\[b \in V\\]. We claim that \\[U \cap V = \emptyset\\]. Consider \\[z \in U\\]. Then, \\[d(a, b) \leq d(a, z) + d(z, b)\\] meaning that
+
+\\[
+d(z, b) \geq d(a, b) - d(a, z) > d(a, b) - \epsilon = d(a, b) / 2 = \epsilon
+\\]
+
+meaning that \\[z \notin V\\], as desired.
+
+Thus, \\[M\\] is Hausdorff.
+
+**Remark**: Not all topologies are Hausdorff. For example, fix some set \\[X\\] and let \\[a, b \in X\\] such that \\[a \neq b\\]. Then, we may construct the topology \\[\tau = \lbrace \emptyset, \lbrace a, b \rbrace, X \rbrace\\] and note that \\[a\\] and \\[b\\] can not be separated.
+
+**Definition** (Interior): Let \\[X\\] be a topological space and \\[A \subseteq X\\]. Then, the _interior_ of \\[A\\], \\[int(A)\\], is the set \\[\bigcup\_{B \in \tau, B \subseteq A} B\\]. Note that the interior is trivially open, as it is a union of open sets. Thus, the interior may be thought of as the largest open subset of \\[A\\].
+
+**Remark**: Let \\[X\\] be a topological space and \\[A \subseteq X\\]. Then, if \\[A\\] is "large," it need not be that \\[int(A)\\] is "large". For example, consider \\[X = \mathbb{R}\\] with the usual metric. Then, \\[int(\mathbb{Q}) = \emptyset\\] due to the density of the reals, yet \\[\mathbb{Q}\\] is itself dense in \\[\mathbb{R}\\].
+
+**Definition** (Closure): Let \\[X\\] be a topological space and \\[A \subseteq X\\]. The _closure_ of \\[A\\], \\[cl(A)\\], is the set \\[\bigcap\_{B \in \tau, B \supseteq A} B\\].
+
+**Proposition**: Let \\[X\\] be a topological space and \\[A \subseteq X\\]. Then, the following hold:
+
+1.  \\[X \setminus cl(A) = int(X \setminus A)\\].
+2.  \\[int(int(A))\\].
+3.  \\[cl(cl(A))\\].
+
+**Proof**:
+We only prove (1).
+
+\\[X \setminus cl(A) \subseteq int(X \setminus A)\\]
+
+Take \\[x \in X \setminus cl(A)\\]. Note that \\[X \setminus cl(A)\\] is an open subset of \\[X \setminus A\\], since \\[cl(A)\\] is closed and \\[cl(A) \supseteq A\\]. Thus, \\[x \in int(X \setminus A)\\].
+
+\\[X \setminus cl(A) \supseteq int(X \setminus A)\\]
+
+Take \\[x \in int(X \setminus A)\\]. Note that \\[int(X \setminus A)\\] is an open subset of \\[X \setminus A\\]. Thus, \\[X \setminus int(X \setminus A)\\] is a closed superset of \\[A\\]. Furthermore, \\[x \notin X \setminus int(X \setminus A)\\]. Meaning that \\[x \notin cl(A)\\]. And so, \\[x \in X \setminus cl(A)\\], as desired.
+
+**Definition** (Basis): A basis of a topology \\[\tau\\] is a set \\[B \subseteq \tau\\] such that every set in \\[\tau\\] is the union of sets in \\[B\\].
+
+Recall that by a prior proposition, the set of open balls in a metric space forms a basis for the metric topology.
+
+We will typically only a topology by only some basis.
+
+A natural question arises: given some set \\[X\\] and a family of subsets of \\[X\\], how can we determine whether this subset forms the basis of a topology? In other words, how do we know when some family of sets is a valid basis?
+
+**Proposition**: Let \\[X\\] be a set and \\[B\\] a family of subsets of \\[X\\]. Then, \\[B\\] is a basis for some topology on \\[X\\] if and only if \\[\bigcup B = X\\] and every pairwise intersection of \\[B\\] can be represented as a union of elements of \\[B\\].
+
+**Proof**: We first prove the forwards direction. Of course, \\[\bigcup B = X\\] since we must have that \\[X\\] can be represented as a union of elements in \\[B\\] since \\[X\\] is always an element of a topology. Furthermore, all pairwise intersections are present in the topology, and thus must be represented as a union of elements in \\[B\\].
+
+We now prove the backwards direction. We wish to show that the set containing any union of elements in \\[B\\] forms a topology over \\[X\\]. Since \\[\bigcup B = X\\], we of course have \\[X\\] in our topology. Furthermore, the empty union results in the empty set, and thus, \\[\emptyset\\] is in our topology.
+
+The topology is trivially closed under union, as the union of unions of elements in \\[B\\] is itself a union of elements of \\[B\\].
+
+Finally, we show that the topology is closed under finite intersection. It suffices to show that the topology is closed under pairwise intersection by induction. Consider two sets \\[U, V\\] in our topology. Then, by definition of our topology,
+
+\\[
+U = \bigcup\_{i \in I} B\_i
+\\]
+
+and
+
+\\[
+V = \bigcup\_{j \in J} B\_j
+\\]
+
+where \\[B\_i, B\_j \in B\\].
+
+Then,
+
+\\[
+U \cap V = \left( \bigcup\_{i \in I} B\_i \right) \cap \left( \bigcup\_{j \in J} B\_j \right) = \bigcup\_{i \in I} \bigcup\_{j \in J} B\_i \cap B\_j.
+\\]
+
+Note, each term in the right-hand side can be represented as a union of elements in \\[B\\] by hypothesis, and thus \\[U \cap V\\] is in the topology, as desired.
