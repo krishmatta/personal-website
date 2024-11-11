@@ -2,11 +2,11 @@
 title: "Wallace Falls State Park Hike on May 15, 2024"
 author: ["Krish Matta"]
 date: 2024-05-15T00:00:00-04:00
-lastmod: 2024-11-10T00:00:00-05:00
+lastmod: 2024-11-11T00:00:00-05:00
 draft: false
 ---
 
-My parents and I originally decided to go on a hike at Colchuck Lake, but due to poor planning we ended up in Wallace Falls State Park.  As suggested by its name, this park features three water falls as its main attraction, the Lower, Middle, and Upper Wallace Falls, with a nice overlook in between (Valley Overlook). For my first ever hike, I found the difficulty to be moderate, with the trail between the Middle and Upper Wallace Falls to be the most difficult due to rapid elevation increase. In total, we travelled 6.67 miles. Overall, I’d highly recommend hiking Wallace Falls State Park to anyone, especially those living in Bellevue as it’s not too far of a drive.
+My parents and I originally decided to hike at Colchuck Lake, but due to poor planning we ended up in Wallace Falls State Park.  As suggested by its name, this park features three water falls as its main attraction, the Lower, Middle, and Upper Wallace Falls, with a nice overlook in between (Valley Overlook). For my first ever hike, I found the difficulty to be moderate, with the trail between the Middle and Upper Wallace Falls to be the most difficult due to rapid elevation increase. In total, we travelled 6.67 miles. Overall, I’d highly recommend hiking Wallace Falls State Park.
 
 
 ## Photos {#photos}

@@ -2,11 +2,11 @@
 title: "Rattlesnake Ledge Trail Hike on June 29, 2024"
 author: ["Krish Matta"]
 date: 2024-06-30T00:00:00-04:00
-lastmod: 2024-11-10T00:00:00-05:00
+lastmod: 2024-11-11T00:00:00-05:00
 draft: false
 ---
 
-My parents and I wanted to hike this weekend; I surprisingly haven't been to Rattlesnake Ledge Trail yet, perhaps the most famous trail in the area, so we decided to hike it. The hike was relatively easy with an incredible view at the top. A little bit of elevation, but nothing too difficult. The trail was very crowded, much than I would've preferred. In total, we hiked 4.9 miles.
+My parents and I wanted to hike this weekend; I surprisingly haven't been to Rattlesnake Ledge Trail yet, perhaps the most famous trail in the area, so we decided to hike it. The hike was relatively easy with an incredible view at the top. The hike involved a bit of elevation, but nothing too difficult. The trail was very crowded, much more than I would've preferred. In total, we hiked 4.9 miles.
 
 
 ## Photos {#photos}
