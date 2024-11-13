@@ -32,7 +32,6 @@ Sorted chronologically.
 ![](/ox-hugo/23.jpg)
 ![](/ox-hugo/24.jpg)
 ![](/ox-hugo/25.jpg)
-![](/ox-hugo/26.jpg)
 ![](/ox-hugo/27.jpg)
 ![](/ox-hugo/28.jpg)
 ![](/ox-hugo/31.jpg)
