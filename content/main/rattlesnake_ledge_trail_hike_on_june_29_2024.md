@@ -2,7 +2,7 @@
 title: "Rattlesnake Ledge Trail Hike on June 29, 2024"
 author: ["Krish Matta"]
 date: 2024-06-30T00:00:00-04:00
-lastmod: 2024-11-11T00:00:00-05:00
+lastmod: 2024-11-13T00:00:00-05:00
 draft: false
 ---
 
@@ -15,15 +15,9 @@ Sorted chronologically.
 
 ![](/ox-hugo/6_29_2024_1.jpg)
 ![](/ox-hugo/6_29_2024_2.jpg)
-![](/ox-hugo/6_29_2024_3.jpg)
-![](/ox-hugo/6_29_2024_4.jpg)
-![](/ox-hugo/6_29_2024_5.jpg)
 ![](/ox-hugo/6_29_2024_6.jpg)
-![](/ox-hugo/6_29_2024_7.jpg)
 ![](/ox-hugo/6_29_2024_8.jpg)
-![](/ox-hugo/6_29_2024_9.jpg)
 ![](/ox-hugo/6_29_2024_10.jpg)
-![](/ox-hugo/6_29_2024_11.jpg)
 ![](/ox-hugo/6_29_2024_12.jpg)
 ![](/ox-hugo/6_29_2024_13.jpg)
 ![](/ox-hugo/6_29_2024_14.jpg)

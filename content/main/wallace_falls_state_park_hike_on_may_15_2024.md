@@ -2,7 +2,7 @@
 title: "Wallace Falls State Park Hike on May 15, 2024"
 author: ["Krish Matta"]
 date: 2024-05-15T00:00:00-04:00
-lastmod: 2024-11-11T00:00:00-05:00
+lastmod: 2024-11-13T00:00:00-05:00
 draft: false
 ---
 
@@ -13,17 +13,11 @@ My parents and I originally decided to hike at Colchuck Lake, but due to poor pl
 
 Sorted chronologically.
 
-![](/ox-hugo/1.jpg)
-![](/ox-hugo/2.jpg)
-![](/ox-hugo/3.jpg)
-![](/ox-hugo/4.jpg)
 ![](/ox-hugo/5.jpg)
 ![](/ox-hugo/6.jpg)
 ![](/ox-hugo/7.jpg)
 ![](/ox-hugo/8.jpg)
 ![](/ox-hugo/9.jpg)
-![](/ox-hugo/10.jpg)
-![](/ox-hugo/11.jpg)
 ![](/ox-hugo/12.jpg)
 ![](/ox-hugo/13.jpg)
 ![](/ox-hugo/14.jpg)
@@ -41,6 +35,4 @@ Sorted chronologically.
 ![](/ox-hugo/26.jpg)
 ![](/ox-hugo/27.jpg)
 ![](/ox-hugo/28.jpg)
-![](/ox-hugo/29.jpg)
-![](/ox-hugo/30.jpg)
 ![](/ox-hugo/31.jpg)

@@ -2,7 +2,7 @@
 title: "Cougar Mountain Regional Wildland Park Hike on June 16, 2024"
 author: ["Krish Matta"]
 date: 2024-06-16T00:00:00-04:00
-lastmod: 2024-11-10T00:00:00-05:00
+lastmod: 2024-11-13T00:00:00-05:00
 draft: false
 ---
 
@@ -20,5 +20,4 @@ Sorted chronologically.
 ![](/ox-hugo/6_16_24_5.jpg)
 ![](/ox-hugo/6_16_24_6.jpg)
 ![](/ox-hugo/6_16_24_7.jpg)
-![](/ox-hugo/6_16_24_8.jpg)
 ![](/ox-hugo/6_16_24_9.jpg)
