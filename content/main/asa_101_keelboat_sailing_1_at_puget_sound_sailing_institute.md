@@ -1,8 +1,8 @@
 ---
-title: "ASA 101, Keelboat Sailing 1"
+title: "ASA 101, Keelboat Sailing 1 at Puget Sound Sailing Institute"
 author: ["Krish Matta"]
 date: 2024-05-26T00:00:00-04:00
-lastmod: 2024-11-10T00:00:00-05:00
+lastmod: 2024-11-24T00:00:00-05:00
 draft: false
 ---
 
