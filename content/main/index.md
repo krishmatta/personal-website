@@ -1,5 +1,5 @@
 ---
-title: "Main Notes"
+title: "Main"
 author: ["Krish Matta"]
 draft: false
 ---
