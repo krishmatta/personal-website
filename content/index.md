@@ -19,7 +19,7 @@ I'm an undergraduate student majoring in computer science and minoring in mathem
 Academically, I'm interested in computer science and mathematics, with a particular interest in artificial intelligence safety. Casually, I enjoy nature and reading.
 
 # About the Site
-This website is a digital garden, a space where my ideas grow and evolve organically. Unlike a traditional blog, digital gardens heavily emphasize interlinkage between notes as well as constant refinement, meaning that notes may change at any moment.
+This website is a collection of interconnected thoughts and ideas that evolve over time. Notes are continuously refined and updated, creating a web of knowledge rather than a chronological stream of posts.
 
 My writing is organized into two main sections:
 - [Main](/main/) contains my original thoughts, such as book reviews and independent research.
