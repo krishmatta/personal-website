@@ -24,14 +24,14 @@ export const defaultContentPageLayout: PageLayout = {
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
-    Component.Explorer({
+    Component.DesktopOnly(Component.Explorer({
       folderClickBehavior: "link",
       filterFn: (node) => {
         const include = new Set(["main", "reference", "highlights"])
 	return include.has(node.name.toLowerCase())
       },
-    }),
-    Component.TableOfContents(),
+    })),
+    Component.DesktopOnly(Component.TableOfContents()),
   ],
   right: [
   ],
@@ -44,14 +44,14 @@ export const defaultListPageLayout: PageLayout = {
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
-    Component.Explorer({
+    Component.DesktopOnly(Component.Explorer({
       folderClickBehavior: "link",
       folderDefaultState: "open",
       filterFn: (node) => {
         const include = new Set(["main", "reference", "highlights"])
 	return include.has(node.name.toLowerCase())
       },
-    }),
+    })),
   ],
   right: [],
 }
