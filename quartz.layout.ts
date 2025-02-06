@@ -49,7 +49,7 @@ export const defaultListPageLayout: PageLayout = {
       folderClickBehavior: "link",
       folderDefaultState: "open",
       filterFn: (node) => {
-        const include = new Set(["main", "reference", "highlights"])
+        const include = new Set(["main", "reference"])
 	return include.has(node.name.toLowerCase())
       },
     })),
