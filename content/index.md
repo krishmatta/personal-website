@@ -19,7 +19,7 @@ I'm an undergraduate student majoring in computer science and minoring in mathem
 Academically, I'm interested in computer science and mathematics, with a particular interest in artificial intelligence safety. Casually, I enjoy nature and reading.
 
 # About the Site
-This website is a collection of my writings, which are organized into two main sections:
+This website is a collection of my writings, which are organized into two sections:
 - [Main](/main/) contains my original thoughts, such as book reviews and independent research.
 - [Reference](/reference/) contains my notes on the works of others, such as lecture notes and research paper summaries.
 
