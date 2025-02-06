@@ -19,13 +19,9 @@ I'm an undergraduate student majoring in computer science and minoring in mathem
 Academically, I'm interested in computer science and mathematics, with a particular interest in artificial intelligence safety. Casually, I enjoy nature and reading.
 
 # About the Site
-This website is a collection of interconnected thoughts and ideas that evolve over time. Notes are continuously refined and updated, creating a web of knowledge rather than a chronological stream of posts.
-
-My writing is organized into two main sections:
+This website is a collection of my writings, which are organized into two main sections:
 - [Main](/main/) contains my original thoughts, such as book reviews and independent research.
 - [Reference](/reference/) contains my notes on the works of others, such as lecture notes and research paper summaries.
-
-Navigating the above may be daunting. Thus, I recommend first viewing my work through the [Highlights](/main/highlights) as an entry point. It consists of work that I feel is particularly accessible, and is more akin to an article list on a traditional blog you may be more familiar with.
 
 # Other Sites
 You can find me elsewhere on the internet at:
