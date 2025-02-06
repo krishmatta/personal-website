@@ -30,7 +30,7 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
       const segments: (string | JSX.Element)[] = []
 
       if (fileData.dates) {
-        const createdDate = formatDate(getDate(cfg, fileData)!, cfg.locale)
+        const createdDate = formatDate(fileData.dates?.["created"], cfg.locale)
         let currSegment = `${createdDate}`
 
         if (fileData.dates?.modified !== undefined) {
