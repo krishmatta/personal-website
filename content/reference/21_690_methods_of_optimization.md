@@ -461,9 +461,17 @@ is a _supporting hyperplane_ if \\(x\_0 \in \partial C\\) and \\(a^T x \leq a^T 
 f(\theta x + (1 - \theta) y) \leq \theta f(x) + (1 - \theta) f(y).
 \\]
 
+If the inequality is strict, i.e.
+
+\\[
+f(\theta x + (1 - \theta) y) < \theta f(x) + (1 - \theta) f(y),
+\\]
+
+for \\(x \neq y\\), then the function is said to be _strictly convex_.
+
 Intuitively, convex functions are those in which the epigraph of the function (the area above the function) is a convex set.
 
-**Remark**. A function \\(f: \mathbb{R}^n \rightarrow \mathbb{R}\\) is convex if and only if it's convex when restricted to any line in its domain, i.e. for all \\(v \in \mathbb{R}^n\\),
+**Remark**. A function \\(f: \mathbb{R}^n \rightarrow \mathbb{R}\\) is convex if and only if it is convex when restricted to any line in its domain, i.e. for all \\(v \in \mathbb{R}^n\\),
 
 \\[
 g(t) = f(x + tv)
@@ -527,3 +535,411 @@ f(z) = \theta f(z) + (1 - \theta) f(z) \leq \theta f(x) + (1 - \theta) f(y),
 \\]
 
 as desired.
+
+Case: \\(n > 1\\)
+
+We can study the one-dimensional function which varies \\(x\\) in the direction of \\(y - x\\), i.e. \\(g(t) = f(x + t(y - x))\\). The result then follows by the \\(n = 1\\) case.
+
+**Remark**. The above inequality is strict if and only if the function is strictly convex.
+
+**Corollary**. Let \\(f: \mathbb{R}^n \rightarrow \mathbb{R}\\) be a convex function, and \\(x \in \mathbb{R}^n\\) a point such that \\(\nabla f(x) = 0\\). Then, \\(x\\) is a global minimizer of \\(f\\).
+
+**Proof**. Consider some \\(y \in \mathbb{R}^n\\). Per the first order characterization of convex functions,
+
+\\[
+f(x) = f(x) + \nabla f(x)^T (y - x) \leq f(y).
+\\]
+
+**Theorem** (Second Order Characterization). A function \\(f: \textbf{dom}(f) \rightarrow \mathbb{R}\\) in \\(C^2\\) is convex if and only if
+
+\\[
+\nabla^2 f(x) \succeq 0
+\\]
+
+for all \\(x \in \textbf{dom}(f)\\).
+
+**Proof**.
+
+First assume that \\(f\\) is convex. Assume for the sake of contradiction that there exists some \\(x \in \textbf{dom}(f)\\) such that \\(\nabla^2 f(x)\\) is not positive semi-definite. By definition, there exists some eigenvector \\(v \in \mathbb{R}^n\\) such that \\(\nabla^2 f(x) v = \lambda v\\) where \\(\lambda < 0\\).
+
+Define \\(g(t) = f(x + tv)\\). Note that
+
+\\[
+g''(t) = v^T \nabla^2 f(x+tv) v.
+\\]
+
+Hence,
+
+\\[
+g''(0) = v^T \nabla^2 f(x) v = v^T \lambda v = \lambda || v ||^2 < 0.
+\\]
+
+By definition of the second derivative, for some small \\(\epsilon > 0\\), \\(g'( c) < g'(0)\\) for all \\(c \in (0, \epsilon)\\).
+
+Then,
+
+\\[
+g(\epsilon) = g(0) + (g(\epsilon) - g(0)) = g(0) + g'( c) \epsilon < g(0) + g'(0) \epsilon,
+\\]
+
+by the mean value theorem. Hence, a contradiction since \\(g\\) inherits convexity from \\(f\\) and the above violates the first order characterization of convexity. Thus, \\(\nabla^2 f(x) \succeq 0\\) for all \\(x \in \textbf{dom}(f)\\).
+
+Now assume that \\(\nabla^2 f(x) \succeq 0\\) for all \\(x \in \textbf{dom}(f)\\). We claim that \\(f\\) is convex.
+
+Fix \\(x, y \in \textbf{dom}(f)\\). Define
+
+\\[
+g(t) = f(x + t(y - x)).
+\\]
+
+Then,
+
+\\[
+f(y) = g(1) = g(0) + (g(1) - g(0)) = g(0) + g'( c) \geq g(0) + g'(0) = f(x) + \nabla f(x)^T (y - x)
+\\]
+
+by mean value theorem. The inequality follows from the fact that \\(g''\\) is always non-negative, implying that \\(g'\\) is non-decreasing.
+
+Since \\(x, y\\) are arbitrary, we have that \\(f\\) is convex by the first order characterization of convexity.
+
+**Remark**. The above inequality is strict if and only if the function is strictly convex.
+
+
+### Operations that Preserve Convexity {#operations-that-preserve-convexity}
+
+
+#### Nonnegative Weighted Sum {#nonnegative-weighted-sum}
+
+**Proposition**. Let \\(\lbrace f\_i \rbrace\_{i=1}^n\\) be a sequence of convex functions. Then,
+
+\\[
+\sum\_{i=1}^n \omega\_i f\_i, \quad \omega\_i \geq 0
+\\]
+
+is convex.
+
+**Proof**. Fix \\(x, y \in \mathbb{R}^n\\) and \\(\theta \in [0, 1]\\). Then,
+
+$$
+\begin{aligned}
+\left( \sum_{i=1}^n \omega_i f_i \right) (\theta x + (1 - \theta y)) &= \sum_{i=1}^n \omega_i f_i(\theta x + (1 - \theta) y) \\
+&\leq \sum_{i=1}^n \omega_i \left( \theta f_i(x) + (1 - \theta) f_i(y) \right) \\
+&= \theta \left( \sum_{i=1}^n \omega_i f_i(x) \right) + (1 - \theta) \left( \sum_{i=1}^n \omega_i f_i(y) \right) \\
+&= \theta \left( \sum_{i=1}^n \omega_i f_i) \right) (x) + (1 - \theta) \left( \sum_{i=1}^n \omega_i f_i \right) (y) \\
+\end{aligned}
+$$
+
+as desired.
+
+**Remark**. The above proposition generalizes to infinite sums (if they converge) as well as integrals. Specifically, if a function \\(f(x, y)\\) is convex in \\(x\\) for all \\(y \in A\\), then
+
+\\[
+g(x) = \int\_{A} \omega(y) f(x, y) dy, \quad \omega(y) \geq 0
+\\]
+
+is convex.
+
+
+#### Affine Composition {#affine-composition}
+
+**Proposition**. Let \\(f: \mathbb{R}^n \rightarrow \mathbb{R}\\), \\(A \in \mathbb{R}^{n \times m}\\), and \\(b \in \mathbb{R}^n\\). Then,
+
+\\[
+g(x) = f\left(Ax+b\right)
+\\]
+
+is convex if \\(f\\) is convex.
+
+**Proof**. Fix \\(x, y \in \mathbb{R}^n\\) and \\(\theta \in [0, 1]\\). Then,
+
+$$
+\begin{aligned}
+g\left(\theta x + (1 - \theta) y\right)
+&= f\left( A\left(\theta x + (1 - \theta)y\right) + b \right) \\
+&= f\left( \theta (Ax + b) + (1 - \theta) (Ay + b) \right) \\
+&\leq \theta f(Ax + b) + (1 - \theta) f(Ay + b) \\
+&= \theta g(x) + (1 - \theta) g(y).
+\end{aligned}
+$$
+
+
+#### Maximum and Supremum {#maximum-and-supremum}
+
+**Proposition**. Let \\(\lbrace f\_i \rbrace\_{i=1}^n\\) be a sequence of convex functions. Then,
+
+\\[
+g(x) = \max\_{i} f\_i(x)
+\\]
+
+is convex.
+
+**Proof**. Fix \\(x, y \in \mathbb{R}^n\\) and \\(\theta \in [0, 1]\\). Then,
+
+$$
+\begin{aligned}
+g\left(\theta x + (1 - \theta) y \right) &= \max_{i} f_i\left( \theta x + (1 - \theta) y \right) \\
+&\leq \max_{i} \left( \theta f_i(x) + (1 - \theta) f_i(y) \right) \\
+&\leq \theta \max_{i} f_i(x) + (1 - \theta) \max_{i} f_i(y) \\
+&= \theta g(x) + (1 - \theta) g(y).
+\end{aligned}
+$$
+
+**Remark**. The above proposition generalizes to the supremum. Specifically, if \\(f(x, y)\\) is convex in \\(x\\) for all \\(y\\), then
+
+\\[
+g(x) = \sup\_{y} f(x, y)
+\\]
+
+is convex.
+
+
+#### Representation as Supremum of Affine Functions {#representation-as-supremum-of-affine-functions}
+
+**Proposition**. Let \\(f : \mathbb{R}^n \rightarrow \mathbb{R}\\) be a convex function. Then,
+
+\\[
+f(x) = \sup \lbrace g(x) : g \text{ affine}, g(y) \leq f(y) \quad \forall y \in \mathbb{R}^n \rbrace.
+\\]
+
+**Proof**.
+
+\\(f(x) \leq \sup \lbrace g(x) : g \text{ affine}, g(y) \leq f(y) \quad \forall y \in \mathbb{R}^n \rbrace\\)
+
+Define
+
+\\[
+\textbf{epi}(f) = \lbrace (x, y) : f(x) \leq y \rbrace.
+\\]
+
+We claim that \\(\textbf{epi}(f)\\) is convex. Fix \\((x\_1, y\_1), (x\_2, y\_2) \in \textbf{epi}(f)\\), and \\(\theta \in [0, 1]\\). Then let \\(z = \theta (x\_1, y\_1) + (1 - \theta) (x\_2, y\_2)\\). So,
+
+\\[
+z = (\theta x\_1 + (1 - \theta) x\_2, \theta y\_1 + (1 - \theta) y\_2).
+\\]
+
+By convexity of \\(f\\),
+
+\\[
+f(\theta x\_1 + (1 - \theta) x\_2) \leq \theta f(x\_1) + (1 - \theta) f(x\_2) \leq \theta y\_1 + (1 - \theta) y\_2
+\\]
+
+implying that \\(z \in \textbf{epi}(f)\\), as desired. Hence, \\(\textbf{epi}(f)\\) is convex.
+
+Now fix some \\(x \in \mathbb{R}^n\\). We shall show that indeed,
+
+\\[
+f(x) \leq \sup \lbrace g(x) : g \text{ affine}, g(y) \leq f(y) \quad \forall y \in \mathbb{R}^n \rbrace.
+\\]
+
+Observe that \\((x, f(x)) \in \partial \textbf{epi}(f(x))\\), hence we may find \\(a \in \mathbb{R}^n\\), \\(b \in \mathbb{R}\\) such that
+
+\\[
+\begin{bmatrix} a \\\ b \end{bmatrix} \begin{bmatrix} x - z \\\ f(x) - t \end{bmatrix} \leq 0
+\\]
+
+for all \\((z, t) \in \textbf{epi}(f)\\).
+
+Then,
+
+$$
+\begin{aligned}
+& a^T (x - z) + b(f(x) - z) \leq 0 \\
+\implies & a^T (x - z) + b(f(x) - f(z) - s) \leq 0 \\
+\end{aligned}
+$$
+
+for all \\(s\\). Implying that \\(b > 0\\).
+
+We can then write the above as
+
+\\[
+g(z) = \dfrac{a^T}{b} (x - z) + f(x) \leq f(z)
+\\]
+
+for all \\(z \in \mathbb{R}^n\\).
+
+Hence, \\(g\\) is an affine function that underestimates \\(f\\) over all \\(z\\), and achieves \\(g(x) = f(x)\\). We thus have the result.
+
+\\(f(x) \geq \sup \lbrace g(x) : g \text{ affine}, g(y) \leq f(y) \quad \forall y \in \mathbb{R}^n \rbrace\\)
+
+Follows by definition.
+
+
+#### Perspective of a Function {#perspective-of-a-function}
+
+**Definition**. Consider a function \\(f: \mathbb{R}^n \rightarrow \mathbb{R}\\). We define the perspective of \\(f\\) as \\(g\_f: \mathbb{R}^n \times \mathbb{R}\_{> 0} \rightarrow \mathbb{R}\\) via
+
+\\[
+g(x, t) = t f(x/t).
+\\]
+
+**Proposition**. If \\(f: \mathbb{R}^n \rightarrow \mathbb{R}\\) is convex, then \\(g\_f\\) is convex.
+
+**Proof**. It suffices to show that the epigraph of \\(g\_f\\) is convex. Note that the epigraph of \\(g\_f\\) is the preimage of the epigraph of \\(f\\) over the perspective function, hence is convex.
+
+
+### Convex Conjugates {#convex-conjugates}
+
+**Definition**. Let \\(f: \mathbb{R}^n \rightarrow \mathbb{R}\\). The _conjugate_ of \\(f\\), \\(f^{\star}: \mathbb{R}^n \rightarrow \mathbb{R}\\) is defined via
+
+\\[
+f^{\star}(y) = \sup\_{x \in \textbf{dom}(f)} \lbrace y^T x - f(x) \rbrace.
+\\]
+
+Geometrically, the conjugate of a function \\(f\\) is the greatest distance between \\(f\\) and the hyperplane \\(y^T x\\).
+
+**Proposition**. For any function \\(f: \mathbb{R}^n \rightarrow \mathbb{R}\\), the conjugate \\(f^{\star}\\) is always convex.
+
+**Proof**. Observe that \\(y^T x - f(x)\\) is convex in \\(y\\), hence \\(f^{\star}(y) = \sup\_{x \in \textbf{dom}(f)} \lbrace y^T x - f(x) \rbrace\\) is convex in \\(y\\).
+
+
+#### Basic Properties {#basic-properties}
+
+**Proposition** (Fenchel's Inequality). Let \\(f: \mathbb{R}^n \rightarrow \mathbb{R}\\) be a function. Then,
+
+\\[
+f(x) + f^{\star}(y) \geq x^T y
+\\]
+
+for all \\(x, y\\).
+
+**Proof**. Note that
+
+\\[
+f^{\star}(y) \geq x^T y - f(x)
+\\]
+
+for all \\(x, y\\). The result is then immediate.
+
+
+## Convex Optimization Problems {#convex-optimization-problems}
+
+
+### Optimization Problems {#optimization-problems}
+
+**Definition**. An _optimization problem_ is of the form
+
+$$
+\begin{aligned}
+\min_{x} \quad & f_0(x) \\
+\textrm{s.t.} \quad & f_i(x) \leq 0, \quad i = 1, \dots, m \\
+& h_i(x) = 0, \quad i = 1, \dots, p.
+\end{aligned}
+$$
+
+Its domain is the intersection of domains for each function, i.e.
+
+\\[
+D = \bigcap\_{i=0}^m \textbf{dom}(f\_i) \cap \bigcap\_{i=1}^p \textbf{dom}(h\_i).
+\\]
+
+**Definition**. The _feasible set_ of an optimization problem is the set
+
+\\[
+\Omega = \lbrace x \in D : f\_i(x) \leq 0, h\_i(x) = 0 \rbrace.
+\\]
+
+We say that an optimization problem is feasible if its feasible set is not empty.
+
+**Definition**. We define the optimal value of an optimization problem as the value
+
+\\[
+p^{\star} = \inf\_{x \in \Omega} f\_0(x).
+\\]
+
+If \\(\Omega = \emptyset\\), then \\(p^{\star} = \infty\\).
+
+**Definition**. If there exists a sequence \\(\lbrace x\_i \rbrace\_{i=1}^{\infty} \subseteq \Omega\\) such that \\(f\_0(x\_k) \rightarrow -\infty\\) as \\(k \rightarrow \infty\\), we say that the optimization problem is _unbounded below_ and \\(p^{\star} = -\infty\\).
+
+**Definition**. We say that \\(x \in \Omega\\) is _\\(\epsilon\\) - suboptimal_ if \\(f\_0(x) \leq p^{\star} + \epsilon\\).
+
+**Definition**. We say that \\(x \in \Omega\\) is _locally optimal_ if there exists some \\(R > 0\\) such that \\(f\_0(z) \geq f\_0(x)\\) for all \\(z \in B(x, R)\\).
+
+**Definition**. If \\(f\_i(x) = 0\\) for some \\(i \in [m]\\) and \\(x \in \Omega\\), we say that constraint \\(i\\) is _active_ at \\(x\\).
+
+**Definition**. We call an optimization problem of the form
+
+$$
+\begin{aligned}
+\min_{x} \quad & 0 \\
+\textrm{s.t.} \quad & f_i(x) \leq 0, \quad i = 1, \dots, m \\
+& h_i(x) = 0, \quad i = 1, \dots, p.
+\end{aligned}
+$$
+
+a _feasibility problem_.
+
+**Remark**. Note that maximization problem can be formulated as optimization problems by taking \\(-f\_0\\).
+
+
+#### Slack Variables {#slack-variables}
+
+Slack variables allow us to express inequalities as equalities.
+
+In particular, note that
+
+\\[
+f\_i(x) \leq 0 \iff f\_i(x) + \xi = 0
+\\]
+
+for some \\(\xi \geq 0\\) (in particular, \\(\xi = -f\_i(x)\\)). Here, \\(\xi\\) is a _slack variable_.
+
+More generally, we can reformulate the optimization problem
+
+$$
+\begin{aligned}
+\min_{x} \quad & f_0(x) \\
+\textrm{s.t.} \quad & f_i(x) \leq 0, \quad i = 1, \dots, m \\
+& h_i(x) = 0, \quad i = 1, \dots, p.
+\end{aligned}
+$$
+
+as
+
+$$
+\begin{aligned}
+\min_{x, \xi} \quad & f_0(x) \\
+\textrm{s.t.} \quad & f_i(x) + \xi_i = 0, \quad i = 1, \dots, m \\
+& h_i(x) = 0, \quad i = 1, \dots, p \\
+& \xi_i \geq 0, \quad i = 1, \dots, m.
+\end{aligned}
+$$
+
+
+### Convex Problems {#convex-problems}
+
+**Definition**. A _convex problem_ is an optimization problem of the form
+
+$$
+\begin{aligned}
+\min_{x} \quad & f_0(x) \\
+\textrm{s.t.} \quad & f_i(x) \leq 0, \quad i = 1, \dots, m \\
+& a_i^T x = b, \quad i = 1, \dots, p.
+\end{aligned}
+$$
+
+where \\(f\_i\\) is convex for all \\(i\\).
+
+**Remark**. The feasible set of a convex optimization problem is convex:
+
+\\[
+\Omega = \bigcap\_{i=1}^m \lbrace x : f\_i(x) \leq 0 \rbrace \cap \textbf{dom}(f\_0) \cap \lbrace x : Ax = b \rbrace,
+\\]
+
+i.e. it is the intersection of convex sets.
+
+**Proposition**. Any local solution to a convex optimization problem is a global solution.
+
+**Proof**. Let \\(x \in \Omega\\) be a local solution to the typical convex optimization problem. Then, there exists \\(R > 0\\) such that \\(x\\) is optimal in the \\(R\\) ball around it.
+
+Assume for the sake of contradiction that \\(x\\) is not locally optimal. Then, there exists some \\(y \in \Omega\\) such that \\(f\_0(y) < f\_0(x)\\).
+
+We can find some \\(\theta \in [0, 1]\\) such that \\(x + \theta (y - x) \in B(x, R)\\). Then,
+
+\\[
+f\_0 \left( x + \theta (y - x) \right) \leq (1 - \theta) f\_0(x) + \theta f\_0(y) < f\_0(x),
+\\]
+
+a contradiction.
+
+The above proposition provides some intuition as to why convex optimization problems are nice to work with.
