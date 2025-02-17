@@ -942,4 +942,100 @@ f\_0 \left( x + \theta (y - x) \right) \leq (1 - \theta) f\_0(x) + \theta f\_0(y
 
 a contradiction.
 
-The above proposition provides some intuition as to why convex optimization problems are nice to work with.
+The above proposition provides some intuition as to why convex optimization problems are particularly nice to work with.
+
+**Proposition**. Let \\(f\_0 \in C^1(\Omega)\\) be a convex function. Then, \\(x \in \Omega\\) is optimal if and only if
+\\[
+\nabla f\_0(x)^T (y - x) \geq 0
+\\]
+
+for all \\(y \in \Omega\\).
+
+**Proof**. First assume that \\(x \in \Omega\\) is optimal. Assume for the sake of contradiction that \\(\nabla f\_0(x)^T (y - x) < 0\\) for some \\(y\\). Define
+
+\\[
+g(t) = f(x + t(y - x)).
+\\]
+
+Observe then that
+
+\\[
+g'(0) = \nabla f\_0(x)^T (y - x) < 0.
+\\]
+
+Thus, for some \\(\epsilon > 0\\), for all \\(c \in (0, \epsilon)\\), we have that \\(g( c) < g(0)\\), implying that
+
+\\[
+f(x + c(y - x)) < f(x),
+\\]
+
+a contradiction.
+
+Now assume that
+
+\\[
+\nabla f\_0(x)^T (y - x) \geq 0
+\\]
+
+holds for all \\(x\\). We claim that \\(x\\) is optimal. Observe that
+
+\\[
+f(x) \leq f(x) + \nabla f(x)^T (y - x) \leq f(y)
+\\]
+
+as desired.
+
+**Corollary**. Consider some convex optimization problem where \\(f\_0 \in C^1(\Omega)\\), \\(\Omega = \mathbb{R}^n\\) or \\(\Omega = \textbf{dom}(f\_0)\\), and there is an optimal point \\(x\\). Then,
+
+\\[
+\nabla f(x)^T (y - x) = 0.
+\\]
+
+**Proof**.
+
+Case: \\(\Omega = \mathbb{R}^n\\)
+
+For any optimal point \\(x\\), we must have that
+
+\\[
+\nabla f(x)^T (y - x) \geq 0.
+\\]
+
+If the gradient were not zero, we can find \\(y\\) such that \\(\nabla f(x)^T (y - x) > 0\\), then see that for vector \\(-y\\), \\(\nabla f(x)^T (y - x) < 0\\), a contradiction. Hence,
+
+\\[
+\nabla f(x) = 0.
+\\]
+
+Case: \\(\Omega = \textbf{dom}(f\_0)\\)
+
+As \\(f\_0\\) is continuously differentiable, its domain must be open. Hence, we may find \\(\theta > 0\\) small enough such that \\(y = x - \theta \nabla f\_0 (x) \in \Omega\\).
+
+Then,
+
+\\[
+-\theta || \nabla f\_0(x)^T || = \nabla f\_0(x)^T (- \theta \nabla f\_0 (x) ) =  \nabla f\_0(x)^T (y - x) \geq 0
+\\]
+
+which is only true if the gradient were zero.
+
+**Remark**. Consider some convex optimization problem in which \\(f\_0 \in C^1(\Omega)\\) and the only constraint is \\(Ax = b\\).
+
+Then, the optimality condition for a point \\(x\\) states that
+
+\\[
+\nabla f\_0(x)^T (y - x) \geq 0
+\\]
+
+for all \\(y \in \Omega\\), i.e. for all \\(y\\) such that \\(Ay = b\\). In particular, we can express \\(y = x + v\\) where \\(Av = 0\\). Then by substitution,
+\\[
+\nabla f\_0(x)^T v \geq 0
+\\]
+
+for all \\(v \in \mathcal{N}(A)\\).
+
+Moreover, \\(\mathcal{N}(A)\\) is a subspace, and \\(\nabla f\_0(x)^T v\\) is a non-negative linear function over \\(v \in \mathcal{N}(A)\\). Hence,
+
+\\[
+\nabla f\_0(x)^T v = 0.
+\\]
