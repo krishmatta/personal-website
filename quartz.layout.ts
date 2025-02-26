@@ -28,7 +28,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.DesktopOnly(Component.Explorer({
       folderClickBehavior: "link",
       filterFn: (node) => {
-        const include = new Set(["main", "reference", "highlights"])
+        const include = new Set(["main", "reference"])
 	return include.has(node.name.toLowerCase())
       },
     })),
@@ -47,7 +47,6 @@ export const defaultListPageLayout: PageLayout = {
     Component.Search(),
     Component.DesktopOnly(Component.Explorer({
       folderClickBehavior: "link",
-      folderDefaultState: "open",
       filterFn: (node) => {
         const include = new Set(["main", "reference"])
 	return include.has(node.name.toLowerCase())
