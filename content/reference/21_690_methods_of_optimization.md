@@ -2,7 +2,7 @@
 title: "21-690: Methods of Optimization"
 author: ["Krish Matta"]
 date: 2025-02-05T00:00:00-05:00
-lastmod: 2025-02-16T00:00:00-05:00
+lastmod: 2025-03-31T00:00:00-04:00
 tags: ["draft"]
 draft: false
 ---
@@ -75,7 +75,7 @@ where \\(\theta\_i \in [0, 1]\\) for all \\(i \in [k]\\) and \\(\sum\_{i=1}^k \t
 
 #### Cones {#cones}
 
-**Definition** (Cone). A set \\(C\\) is a _cone_ if for all \\(x \in C\\), \\(\lambda x \in C\\) for all \\(\lambda > 0\\).
+**Definition** (Cone). A set \\(C\\) is a _cone_ if for all \\(x \in C\\), \\(\lambda x \in C\\) for all \\(\lambda \geq 0\\).
 
 The traditional image of a "cone" is itself a cone, if extended to infinity.
 
@@ -422,7 +422,7 @@ Thus, the hyperplane strictly separates \\(C\\) and \\(\lbrace x\_0 \rbrace\\).
 
 We can use this result to show the following.
 
-**Proposition**. Let \\(C \subseteq \mathbb{R}^n\\) be a convex set, and \\(\mathcal{H}\\) be the set of all halfspaces that contain \\(C\\) entirely. Then,
+**Proposition**. Let \\(C \subseteq \mathbb{R}^n\\) be a closed convex set, and \\(\mathcal{H}\\) be the set of all halfspaces that contain \\(C\\) entirely. Then,
 
 \\[
 C = \bigcap \mathcal{H}.
@@ -444,7 +444,7 @@ Take \\(x \in \bigcap \mathcal{H}\\). Assume for the sake of contradiction that 
 **Definition**. For a convex set \\(C \subseteq \mathbb{R}^n\\), we say that a hyperplane
 
 \\[
-\lbrace x \in \mathbb{R}^n : a^T x = a^T x \rbrace
+\lbrace x \in \mathbb{R}^n : a^T x = a^T x\_0 \rbrace
 \\]
 
 is a _supporting hyperplane_ if \\(x\_0 \in \partial C\\) and \\(a^T x \leq a^T x\_0\\) for all \\(x \in C\\). Geometrically, the hyperplane is tangent to a point on the boundary of \\(C\\), and its halfspace contains the entirety of \\(C\\).
@@ -770,7 +770,7 @@ Follows by definition.
 **Definition**. Consider a function \\(f: \mathbb{R}^n \rightarrow \mathbb{R}\\). We define the perspective of \\(f\\) as \\(g\_f: \mathbb{R}^n \times \mathbb{R}\_{> 0} \rightarrow \mathbb{R}\\) via
 
 \\[
-g(x, t) = t f(x/t).
+g\_f(x, t) = t f(x/t).
 \\]
 
 **Proposition**. If \\(f: \mathbb{R}^n \rightarrow \mathbb{R}\\) is convex, then \\(g\_f\\) is convex.
@@ -914,19 +914,19 @@ $$
 \begin{aligned}
 \min_{x} \quad & f_0(x) \\
 \textrm{s.t.} \quad & f_i(x) \leq 0, \quad i = 1, \dots, m \\
-& a_i^T x = b, \quad i = 1, \dots, p.
+& a_i^T x = b_i, \quad i = 1, \dots, p.
 \end{aligned}
 $$
 
 where \\(f\_i\\) is convex for all \\(i\\).
 
-**Remark**. The feasible set of a convex optimization problem is convex:
+**Remark**. The feasible set of a convex optimization problem
 
 \\[
-\Omega = \bigcap\_{i=1}^m \lbrace x : f\_i(x) \leq 0 \rbrace \cap \textbf{dom}(f\_0) \cap \lbrace x : Ax = b \rbrace,
+\Omega = \bigcap\_{i=1}^m \lbrace x : f\_i(x) \leq 0 \rbrace \cap \textbf{dom}(f\_0) \cap \lbrace x : Ax = b \rbrace
 \\]
 
-i.e. it is the intersection of convex sets.
+is convex as it is the intersection of convex sets.
 
 **Proposition**. Any local solution to a convex optimization problem is a global solution.
 
@@ -985,57 +985,962 @@ f(x) \leq f(x) + \nabla f(x)^T (y - x) \leq f(y)
 
 as desired.
 
-**Corollary**. Consider some convex optimization problem where \\(f\_0 \in C^1(\Omega)\\), \\(\Omega = \mathbb{R}^n\\) or \\(\Omega = \textbf{dom}(f\_0)\\), and there is an optimal point \\(x\\). Then,
+**Corollary**. Consider some convex optimization problem where \\(f\_0 \in C^1(\Omega)\\). If \\(\Omega\\) is open and \\(x \in \Omega\\) is the optimal point, then
 
 \\[
-\nabla f(x)^T (y - x) = 0.
+\nabla f(x)^T (y - x) = 0
 \\]
+
+for all \\(y \in \Omega\\).
 
 **Proof**.
 
-Case: \\(\Omega = \mathbb{R}^n\\)
-
-For any optimal point \\(x\\), we must have that
+As \\(\Omega\\) is open, we can find small enough \\(\theta > 0\\) such that \\(y = x - \theta \nabla f\_0(x) \in \Omega\\). Then,
 
 \\[
-\nabla f(x)^T (y - x) \geq 0.
+-\theta || \nabla f\_0(x) ||^2 = \nabla f\_0(x)^T ((x - \theta \nabla f\_0(x)) - x) \geq 0
 \\]
 
-If the gradient were not zero, we can find \\(y\\) such that \\(\nabla f(x)^T (y - x) > 0\\), then see that for vector \\(-y\\), \\(\nabla f(x)^T (y - x) < 0\\), a contradiction. Hence,
+which is only true if the gradient is zero.
+
+**Proposition**: Consider the convex optimization problem
+
+$$
+\begin{aligned}
+\min_{x} \quad & f_0(x) \\
+\textrm{s.t.} \quad & Ax = b
+\end{aligned}
+$$
+
+where \\(f\_0 \in C^1(\Omega)\\). Then, a point \\(x^{\star}\\) is an optimal point if and only if
 
 \\[
-\nabla f(x) = 0.
+\nabla f\_0(x^{\star}) + A^T v = 0
 \\]
 
-Case: \\(\Omega = \textbf{dom}(f\_0)\\)
-
-As \\(f\_0\\) is continuously differentiable, its domain must be open. Hence, we may find \\(\theta > 0\\) small enough such that \\(y = x - \theta \nabla f\_0 (x) \in \Omega\\).
-
-Then,
+for some \\(v\\), and
 
 \\[
--\theta || \nabla f\_0(x)^T || = \nabla f\_0(x)^T (- \theta \nabla f\_0 (x) ) =  \nabla f\_0(x)^T (y - x) \geq 0
+Ax^{\star} = b.
 \\]
 
-which is only true if the gradient were zero.
-
-**Remark**. Consider some convex optimization problem in which \\(f\_0 \in C^1(\Omega)\\) and the only constraint is \\(Ax = b\\).
-
-Then, the optimality condition for a point \\(x\\) states that
+**Proof**. We first prove the forwards direction. Assume that \\(x^{\star}\\) is optimal. Then, \\(Ax^{\star} = b\\) trivially. Furthermore, we know that for all \\(y \in \Omega\\),
 
 \\[
-\nabla f\_0(x)^T (y - x) \geq 0
+\nabla f\_0(x^{\star})^T (y - x^{\star}) \geq 0.
 \\]
 
-for all \\(y \in \Omega\\), i.e. for all \\(y\\) such that \\(Ay = b\\). In particular, we can express \\(y = x + v\\) where \\(Av = 0\\). Then by substitution,
+As \\(y \in \Omega\\), we know that \\(Ay = b\\) as well. Thus, we must have that \\(y = x + v\\) where \\(v \in \mathcal{N}(A)\\). We may then rewrite the above as
+
 \\[
-\nabla f\_0(x)^T v \geq 0
+\nabla f\_0(x^{\star})^T v \geq 0
 \\]
 
 for all \\(v \in \mathcal{N}(A)\\).
 
-Moreover, \\(\mathcal{N}(A)\\) is a subspace, and \\(\nabla f\_0(x)^T v\\) is a non-negative linear function over \\(v \in \mathcal{N}(A)\\). Hence,
+Thus, \\(\nabla f\_0(x^{\star})\\) is orthogonal to \\(\mathcal{N}(A)\\), hence \\(\nabla f\_0(x^{\star}) \in \mathcal{R}(A^T)\\). Similarly, its negative is in the range of \\(A^T\\). Meaning that there must exist some \\(v\\) such that
 
 \\[
-\nabla f\_0(x)^T v = 0.
+\nabla f\_0(x^{\star}) + A^T v = 0.
 \\]
+
+We now prove the backwards direction.
+
+If \\(Ax^{\star} = b\\), then clearly \\(x^{\star}\\) is feasible.
+
+If
+
+\\[
+\nabla f\_0(x^{\star}) + A^T v = 0,
+\\]
+
+then \\(\nabla f\_0(x^{\star}) \in \mathcal{R}(A^T)\\). Hence, it is orthogonal to \\(\mathcal{N}(A)\\), and so
+
+\\[
+\nabla f\_0(x^{\star})^T (y - x^{\star}) = 0
+\\]
+
+for all \\(y \in \Omega\\).
+
+Thus, \\(x^{\star}\\) is optimal.
+
+
+### Linear Problems {#linear-problems}
+
+**Definition**. A _linear problem_ (LP) is an optimization problem of the form
+
+$$
+\begin{aligned}
+\min_{x} \quad & c^T x \\
+\textrm{s.t.} \quad & Ax = b \\
+& x \succeq 0.
+\end{aligned}
+$$
+
+One may introduce inequalities in the constraints via slack variables.
+
+
+### Quadratic Problems {#quadratic-problems}
+
+**Definition**. A _quadratic problem_ (QP) is an optimization problem of the form
+
+$$
+\begin{aligned}
+\min_{x} \quad & \dfrac{1}{2} x^T P x + q^T x + r \\
+\textrm{s.t.} \quad & Gx \preceq h \\
+& Ax = b,
+\end{aligned}
+$$
+
+where \\(P \in S\_+^n\\).
+
+**Definition**. A _quadratically constrained quadratic problem_ (QCQP) is an optimization problem of the form
+
+$$
+\begin{aligned}
+\min_{x} \quad & \dfrac{1}{2} x^T P_0 x + q_0^T x + r_0 \\
+\textrm{s.t.} \quad & \dfrac{1}{2} x^T P_i x + q_i^T x + r_i \leq 0 \\
+& Ax = b,
+\end{aligned}
+$$
+
+where \\(P\_i \in S\_+^n\\).
+
+**Definition**. A _second-order cone program_ (SOCP) is an optimization problem of the form
+
+$$
+\begin{aligned}
+\min_{x} \quad & f_0(x) \\
+\textrm{s.t.} \quad & || A_ix + b_i ||_2 \leq c_i^T x + d_i \\
+& Fx = g.
+\end{aligned}
+$$
+
+
+## Duality {#duality}
+
+
+### Lagrange Dual Function {#lagrange-dual-function}
+
+**Definition**. The _Lagrangian_ of a (not necessarily convex) optimization problem
+
+$$
+\begin{aligned}
+\min_{x} \quad & f_0(x) \\
+\textrm{s.t.} \quad & f_i(x) \leq 0, \quad i = 1, \dots, m \\
+& h_i(x) = 0, \quad i = 1, \dots, p.
+\end{aligned}
+$$
+
+is a function \\(\mathcal{L}: \mathbb{R}^n \times \mathbb{R}^m \times \mathbb{R}^p\\) defined via
+
+\\[
+\mathcal{L}(x, \lambda, \nu) = f\_0(x) + \lambda^T f(x) + \nu^T h(x).
+\\]
+
+**Definition**: The _Lagrange dual_ of an optimization problem is the function \\(g: \mathbb{R}^m \times \mathbb{R}^p\\) defined via
+
+\\[
+g(\lambda, \nu) = \inf\_{x \in D} \mathcal{L}(x, \lambda, \nu)
+\\]
+
+where \\(\mathcal{L}\\) is the Lagrangian of the optimization problem and \\(D\\) is the domain of the optimization problem (not necessarily feasible).
+
+**Proposition**. The Lagrange dual of any optimization problem is concave.
+
+**Proof**. Observe that the Lagrangian is affine in \\(\lambda, \nu\\). Concavity is preserved under point-wise infimum.
+
+**Proposition** (Weak Duality). For some optimization problem, let \\(p^{\star}\\) be its optimal value and \\(g(\lambda, \nu)\\) be its Lagrange dual. Then, for any \\(\lambda \geq 0\\) and any \\(\nu\\),
+
+\\[
+g(\lambda, \nu) \leq p^{\star}.
+\\]
+
+**Proof**. Fix \\(\lambda \succeq 0\\) and \\(\nu\\). Consider some feasible \\(x\\). Then,
+
+$$
+\begin{aligned}
+g(\lambda, \nu) &\leq \mathcal{L}(x, \lambda \nu) \\
+&= f_0(x) + \lambda^T f(x) + \nu^T h(x) \\
+&= f_0(x) + \lambda^T f(x) \\
+&\leq f_0(x) \\
+&\leq p^{\star}
+\end{aligned}
+$$
+
+as desired.
+
+**Definition**. If \\((\lambda, \nu) \in \textbf{dom}(g)\\) and \\(\lambda \succeq 0\\), then we say that \\((\lambda, \nu)\\) is _dual feasible_.
+
+
+### Lagrange Dual Problem {#lagrange-dual-problem}
+
+In light of weak duality, we can think of finding the best lower bound on the optimal value using the Lagrange dual function. Thus is the motivation for the Lagrange dual problem, defined below. Note that the Lagrange dual problem is particularly nice due to the fact that the Lagrange dual function is concave, established previously.
+
+**Definition**. Let \\(g(\lambda, \nu)\\) be the Lagrange dual for an optimization problem. We define the _Lagrange dual problem_ for the optimization problem as
+
+$$
+\begin{aligned}
+\max_{\lambda, \nu} \quad & g(\lambda, \nu) \\
+\textrm{s.t.} \quad & \lambda \succeq 0
+\end{aligned}
+$$
+
+We call this problem the _dual_, and the original problem the _primal_.
+
+**Remark**. Let \\(p^{\star}\\) be the optimal value for the primal problem, and \\(d^{\star}\\) be the optimal value to the dual problem. Then, by weak duality,
+
+\\[
+d^{\star} \leq p^{\star}.
+\\]
+
+There may be more implicit constraints, particularly when \\(g\\) is unbounded below (recall that it is an infimum).
+
+**Definition**. The _optimal duality_ gap of a problem is the value
+
+\\[
+p^{\star} - d^{\star} \geq 0.
+\\]
+
+**Definition**. We say that _strong duality_ holds if
+
+\\[
+p^{\star} = d^{\star}.
+\\]
+
+
+### Geometric Intuition {#geometric-intuition}
+
+We now build some geometric intuition regarding duality.
+
+Fix some optimization problem and define the set
+
+\\[
+G = \lbrace (f(x), h(x), f\_0(x)) \in \mathbb{R}^m \times \mathbb{R}^p \times \mathbb{R} | x \in D \rbrace.
+\\]
+
+\\(G\\) essentially expresses all value combinations of the constraints and objective. We now interpret many prior results, along with some new results, using the geometry of \\(G\\).
+
+
+#### Optimal Value {#optimal-value}
+
+It is easy to see that
+
+\\[
+p^{\star} = \inf \lbrace t : (u, v, t) \in G, u \leq 0, v = 0 \rbrace,
+\\]
+
+i.e. we restrict the set we consider to only feasible points.
+
+
+#### Lagrange Dual Function {#lagrange-dual-function}
+
+We can also see that
+
+\\[
+\mathcal{L}(x, \lambda, \nu) = f\_0(x) + \lambda^T f(x) + \nu^T h(x) = (\lambda, \nu, 1)^T (f(x), h(x), f\_0(x))
+\\]
+
+and
+
+\\[
+g(\lambda, \nu) = \inf\_{x \in D} \mathcal{L}(x, \lambda, \nu) = \inf\_{x \in D} (\lambda, \nu, 1)^T (f(x), h(x), f\_0(x)) = \inf \lbrace (\lambda, \nu, 1)^T (u, v, t) | (u, v, t) \in G \rbrace.
+\\]
+
+Thus, for any \\((u, v, t) \in G\\), we have that
+
+\\[
+(\lambda, \nu, 1)^T (u, v, t) \geq g(\lambda, \nu).
+\\]
+
+If the infimum in \\(g\\) is attained, we can think of \\((\lambda, \nu, 1), g(\lambda, \nu)\\) as a supporting hyperplane to \\(G\\).
+
+
+#### Weak Duality {#weak-duality}
+
+Say that \\(\lambda \geq 0\\). Then,
+
+$$
+\begin{aligned}
+p^{\star} &= \inf \lbrace t : (u, v, t) \in G, u \leq 0, v = 0 \rbrace \\
+&\geq \inf \lbrace (\lambda, \nu, 1)^T (u, v, t) : (u, v, t) \in G, u \leq 0, v = 0 \rbrace \\
+&\geq \inf \lbrace (\lambda, \nu, 1)^T (u, v, t) : (u, v, t) \in G \rbrace \\
+&\geq g(\lambda, \nu).
+\end{aligned}
+$$
+
+Thus, for any \\(\lambda, \nu\\) where \\(\lambda \geq 0\\), we have that \\(p^{\star} \geq g(\lambda, \nu)\\). As \\(d^{\star}\\) is the maximum value of \\(g(\lambda, \nu)\\) over all \\(\lambda, \nu\\) where \\(\lambda \geq 0\\), we thus have that
+
+\\[
+p^{\star} \geq d^{\star},
+\\]
+
+proving weak duality.
+
+
+#### Epigraph Variation {#epigraph-variation}
+
+Define
+
+\\[
+A = \lbrace (u, v, t) | \exists x \in D, f\_i(x) \leq u\_i, h\_i(x) = v\_i, f\_0(x) \leq t \rbrace.
+\\]
+
+\\(A\\) can be thought of as sort of an epigraph of \\(G\\), with the exception that we enforce equality on the equality constraints \\(h\\).
+
+Once again, the optimal value can be expressed as
+
+\\[
+p^{\star} = \inf \lbrace t : (0, 0, t) \in A \rbrace.
+\\]
+
+For \\(\lambda \geq 0\\), note that
+
+\\[
+g(\lambda, \nu) = \inf \lbrace (\lambda, \nu, 1)^T (u, v, t) | (u, v, t) \in G \rbrace = \inf \lbrace (\lambda, \nu, 1)^T (u, v, t) | (u, v, t) \in A \rbrace,
+\\]
+
+as \\(G\\) is a subset of \\(A\\), but points in \\(A\\) do not decrease the value of \\((\lambda, \nu, 1)^T (u, v, t)\\).
+
+Once again, we may say that if the infimum is attained, then \\((\lambda, \nu, 1), g(\lambda, \nu)\\) is a supporting hyperplane to \\(A\\) since for all \\(x \in A\\), we have
+
+\\[
+(\lambda, \nu, 1)^T x \geq g(\lambda, \nu).
+\\]
+
+Note that \\((0, 0, p^{\star})\\) is in the boundary of \\(A\\), hence
+
+\\[
+p^{\star} = (\lambda, \nu, 1)^T (0, 0, p^{\star}) \geq g(\lambda, \nu)
+\\]
+
+once again gives us weak duality.
+
+
+#### Slater's Condition {#slater-s-condition}
+
+**Proposition** (Slater's Condition). If there exists an "interior" to the inequality constraints of a convex optimization problem, i.e.
+
+\\[
+\exists x \hspace{0.5em} f\_i(x) < 0 \quad \forall i = 1, \dots, m
+\\]
+
+and \\(x\\) is feasible, then strong duality holds.
+
+**Proof**. We will use the geometric interpretation of duality to prove Slater's condition.
+
+First note that strong duality holds if and only if
+
+\\[
+p^{\star} = (\lambda, \nu, 1)^T (0, 0, p^{\star}) = g(\lambda, \nu)
+\\]
+
+for some \\(\lambda, \nu\\). In other words, there exists a supporting hyperplane \\((\lambda, \nu, 1), g(\lambda, \nu)\\) to \\(A\\) (defined above) with \\(\lambda \geq 0\\) tangent to \\((0, 0, p^{\star})\\).
+
+The idea behind the proof is that we will separate \\(A\\) from the set
+
+\\[
+B = \lbrace (0, 0, s) \in \mathbb{R}^m \times \mathbb{R}^p \times \mathbb{R} | s < p^{\star} \rbrace
+\\]
+
+with a hyperplane that proves strong duality.
+
+In doing so, we will make the following simplifying assumptions: \\(\textbf{int}(D) \neq \emptyset\\), \\(\textbf{rank}(A) = p\\), and \\(p^{\star} > -\infty\\) (otherwise \\(d^{\star} = -\infty = p^{\star}\\) by weak duality).
+
+Note that as we are only considering a convex optimization problem, \\(A\\) is convex as it is the Cartesian product of convex sets.
+
+Furthermore, see that
+
+\\[
+A \cap B = \emptyset
+\\]
+
+since \\(p^{\star}\\) is optimal.
+
+As \\(A, B\\) are convex and disjoint, we can separate them. More precisely, there exists \\((\lambda, \nu, \mu) \neq 0, \alpha\\) such that
+
+\\[
+(\lambda, \nu, \mu)^T (u, v, t) \geq \alpha \quad (u, v, t) \in A
+\\]
+
+and
+
+\\[
+(\lambda, \nu, \mu)^T (0, 0, s) \leq \alpha \quad (0, 0, s) \in B.
+\\]
+
+From the first inequality, note that \\(\lambda \succeq 0, u \geq 0\\), otherwise we could scale the left-hand side to negative infinity.
+
+We can rewrite the last inequality as
+
+\\[
+\mu s \leq \alpha \quad s < p^{\star},
+\\]
+
+meaning that
+
+\\[
+\mu p^{\star} \leq \alpha.
+\\]
+
+Thus,
+
+$$
+\begin{aligned}
+\sum_{i=1}^m \lambda_i u_i + \sum_{i=1}^p \nu_i v_i + \mu t &= \lambda^T u + \nu^T v + \mu^T t \\
+&= (\lambda, \nu, \mu)^T (u, v, t) \\
+&\geq \alpha \\
+&\geq \mu p^{\star}.
+\end{aligned}
+$$
+
+For now, assume that \\(\mu > 0\\). We will address the \\(\mu = 0\\) case later.
+
+Dividing both sides by \\(\mu\\), we have that
+
+$$
+\begin{aligned}
+\mathcal{L}(x, \lambda / \mu, \nu / \mu) \geq p^{\star}
+\end{aligned}
+$$
+
+for all \\(x\\) (recall that \\((u, v, t)\\) was an arbitrary element of \\(A\\)).
+
+We can then minimize \\(x\\) over the left-hand side to recover
+
+\\[
+g(\lambda / \mu, \nu / \mu) \geq p^{\star}.
+\\]
+
+Weak duality, however, grants us
+
+\\[
+g(\lambda / \mu, \nu / \mu) = p^{\star}.
+\\]
+
+Hence, when \\(\mu > 0\\), we have strong duality.
+
+We now consider the \\(\mu = 0\\) case. Then,
+
+$$
+\begin{aligned}
+\sum_{i=1}^m \lambda_i u_i + \sum_{i=1}^p \nu_i v_i &= \sum_{i=1}^m \lambda_i u_i + \sum_{i=1}^p \nu_i v_i + \mu t \\
+&= (\lambda, \nu, \mu)^T (u, v, t) \\
+&\geq \alpha \\
+&\geq \mu p^{\star} \\
+&= 0
+\end{aligned}
+$$
+
+As \\((u, v, t)\\) is an arbitrary element of \\(A\\), we have that for all \\(x \in D\\),
+
+\\[
+\sum\_{i=1}^m \lambda\_i f\_i(x) + \nu^T \left( Ax - b \right) \geq 0.
+\\]
+
+Then let \\(x\\) be a Slater point. Plugging this \\(x\\) into the above inequality, we have that
+
+\\[
+\sum\_{i=1}^m \lambda\_i f\_i(x) \geq 0,
+\\]
+
+but \\(f\_i(x) < 0\\) for all \\(i\\). Hence, \\(\lambda\_i \leq 0\\). But, \\(\lambda \succeq 0\\), thus \\(\lambda = 0\\).
+
+Returning to the original inequality, we have that for all \\(x \in D\\),
+
+\\[
+\nu^T \left( Ax - b \right) \geq 0.
+\\]
+
+Note that \\(\nu \neq 0\\) as \\((\lambda, \nu, \mu) \neq 0\\) but \\(\lambda, \mu = 0\\).
+
+Let \\(x\\) once again be the Slater point. Then, we have that \\(\nu \neq 0\\) but
+
+\\[
+\nu^T \left( Ax - b \right) = 0.
+\\]
+
+As \\(x\\) is in the interior, there must exist some other point \\(y \in D\\) such that
+
+\\[
+\nu^T \left( Ay - b \right) < 0
+\\]
+
+unless \\(\nu^T A = 0\\). But, we stated that \\(\textbf{rank}(A) = p\\), hence we have a contradiction. Thus, \\(\mu \neq 0\\) and strong duality holds by the other case.
+
+
+### Optimality Conditions {#optimality-conditions}
+
+
+#### Certificate of Suboptimality {#certificate-of-suboptimality}
+
+The dual function provides us with a method to "certify" the suboptimality of a solution. In particular, say that we are given a solution \\(x\\) to some optimization problem and wish to provide a guarantee on how suboptimal it is. We can use a dual solution \\((\lambda, \nu)\\) as our certificate. By weak duality, we have that
+
+\\[
+g(\lambda, \nu) \leq p^{\star} \leq f\_0(x).
+\\]
+
+Hence,
+
+\\[
+f\_0(x) - p^{\star} \leq f\_0(x) - g(\lambda, \nu).
+\\]
+
+Thus, our certificate tells us that the suboptimality is at most
+
+\\[
+f\_0(x) - g(\lambda, \nu),
+\\]
+
+which is typically called the duality gap.
+
+
+#### Complementary Slackness {#complementary-slackness}
+
+**Proposition** (Complementary Slackness). Consider some optimization problem in which strong duality holds. Let \\(x^{\star}\\) be primal optimal and \\((\lambda^{\star}, \nu^{\star})\\) be dual optimal. Then for all \\(i = 1, \dots, m\\),
+
+\\[
+\lambda^{\star}\_i f\_i(x^{\star}) = 0.
+\\]
+
+**Proof**. Observe that
+
+$$
+\begin{aligned}
+f_0(x^{\star}) &= g(\lambda^{\star}, \nu^{\star}) \\
+&= \inf_{x \in D} \lbrace f_0(x) + \lambda^{\star T} f(x) + \nu^{\star T} h(x) \rbrace \\
+&\leq f_0(x^{\star}) + \lambda^{\star T} f(x^{\star}) + \nu^{\star T} h(x^{\star}) \\
+&= f_0(x^{\star}) + \lambda^{\star T} f(x^{\star}) \\
+&\leq f_0(x^{\star}),
+\end{aligned}
+$$
+
+meaning that
+
+\\[
+f\_0(x^{\star}) + \lambda^{\star T} f(x^{\star}) = f\_0(x^{\star}),
+\\]
+
+i.e.
+
+\\[
+\sum\_{i=1}^m \lambda^{\star}\_i f\_i(x^{\star}) = 0.
+\\]
+
+As \\(\lambda^{\star} \succeq 0\\) and \\(f\_i(x^{\star}) \leq 0\\), we immediately recover complementary slackness.
+
+One can also see from the equalities that \\(x^{\star}\\) is the minimizer to \\(\mathcal{L}(x, \lambda^{\star}, \nu^{\star})\\).
+
+
+#### KKT Conditions {#kkt-conditions}
+
+**Definition**. Consider an optimization problem in which \\(f\_0, f\_1, \dots, f\_m, h\_1, h\_2, \dots, h\_p\\) are differentiable and strong duality holds. The _KKT conditions_ for primal solution \\(x\\) and dual solutions \\((\lambda, \nu)\\) refer to the following conditions:
+
+-   \\(x\\) is primal feasible.
+-   \\((\lambda, \nu)\\) is dual feasible.
+-   \\(\lambda\_i f\_i(x) = 0\\) for all \\(i = 1, \dots, m\\).
+-   \\(\nabla\_x \mathcal{L}(x, \lambda, \nu) = 0\\).
+
+**Proposition**. Consider an optimization problem with the above conditions. Furthermore, let \\(x^{\star}\\) be an optimal primal solution and \\((\lambda^{\star}, \nu^{\star})\\) be an optimal dual solution. Then, these optimal points satisfy the KKT conditions.
+
+**Proof**. It is clear that \\(x^{\star}\\) is primal feasible and \\((\lambda^{\star}, \nu^{\star})\\) is dual feasible. Complementary slackness holds from earlier. Furthermore, see that
+
+\\[
+\inf\_{x \in D} \mathcal{L}(x, \lambda^{\star}, \nu^{\star}) = \mathcal{L}(x^{\star}, \lambda^{\star}, \nu^{\star})
+\\]
+
+meaning that
+
+\\[
+\nabla\_{x} \mathcal{L}(x^{\star}, \lambda^{\star}, \nu^{\star}) = 0,
+\\]
+
+as desired.
+
+**Proposition**. Consider a _convex_ optimization problem with differentiable functions. Furthermore, let \\(x, (\lambda, \nu)\\) be points that satisfy the KKT conditions. Then, \\(x\\) is primal optimal, \\((\lambda, \nu)\\) is dual optimal, and strong duality holds.
+
+**Proof**. Clearly, \\(x\\) is primal feasible and \\((\lambda, \nu)\\) is dual feasible by the KKT conditions. We now show optimality.
+
+As we are considering a convex optimization problem, see that \\(\mathcal{L}(x, \lambda, \nu)\\) is convex in \\(x\\). Hence, if the gradient vanishes for any \\(x\\), that \\(x\\) must be a global minimizer. Implying that
+
+\\[
+g(\lambda, \nu) = \mathcal{L}(x, \lambda, \nu) = f\_0(x) + \sum\_{i=1}^m \lambda\_i f\_i(x) + \sum\_{i=1}^p \nu\_i h\_i(x) = f\_0(x)
+\\]
+
+by invoking complementary slackness.
+
+As the point has the dual equal to the primal, there is zero optimality gap, implying that \\(x\\) is primal optimal and \\((\lambda, \nu)\\) is dual feasible. Furthermore, strong duality holds.
+
+
+## Unconstrained Minimization {#unconstrained-minimization}
+
+We now discuss methods to solve _unconstrained_ minimization problems, i.e. problems of the form
+
+\\[
+\min\_{x \in \mathbb{R}^n} f(x)
+\\]
+
+where \\(f\\) is convex and twice differentiable.
+
+As we are in the unconstrained setting, a point \\(x^{\star}\\) is optimal if and only \\(\nabla f(x^{\star}) = 0\\). There are typically no analytical solutions. Hence, the general idea of these algorithms is to iteratively solve for such a point, i.e. find a sequence \\(\lbrace x^{(k)} \rbrace\_{k=1}^n\\) such that \\(\nabla f(x^{(k)}) \rightarrow 0\\) and consequently \\(f(x^{(k)}) \rightarrow p^{\star}\\).
+
+
+### Strong Convexity {#strong-convexity}
+
+**Definition**. We say that a function \\(f\\) is _strongly convex_ on \\(S\\) if there exists \\(m > 0\\) such that
+
+\\[
+\nabla^2 f(x) \succeq mI,
+\\]
+
+which means that \\(\nabla^2 f(x) - mI \succeq 0\\). We also say that \\(f\\) is \\(m\\) strongly convex.
+
+**Proposition**. Let \\(f\\) be an \\(m\\) strongly convex function on \\(S\\). Then, for all \\(x, y \in S\\),
+
+\\[
+f(y) \geq f(x) + \nabla f(x)^T (y - x) + \dfrac{m}{2} || y - x||^2\_2,
+\\]
+
+i.e. we have stronger guarantees on the first-order characterization of convexity.
+
+**Proof**. By Taylor's and mean value theorem, there exists some \\(z\\) on the line segment \\([x, y]\\) such that
+
+\\[
+f(y) = f(x) + \nabla f(x)^T (y - x) + \dfrac{1}{2} (y - x)^T \nabla^2 f(z) (y - x).
+\\]
+
+By \\(m\\) strong convexity,
+
+\\[
+f(y) \geq f(x) + \nabla f(x)^T (y - x) + \dfrac{m}{2} (y - x)^T (y - x) = f(x) + \nabla f(x)^T (y - x) + \dfrac{m}{2} || y - x ||^2\_2,
+\\]
+
+as desired.
+
+**Proposition**. Let \\(f\\) be an \\(m\\) strongly convex function on \\(S\\) and \\(p^{\star}\\) the minimum value of \\(f\\). Then for any \\(x \in S\\),
+
+\\[
+p^{\star} \geq f(x) - \dfrac{m}{2} || \nabla f(x) ||^2\_2.
+\\]
+
+In words, one can bound the suboptimality of a point using its gradient.
+
+**Proof**. We know that for all \\(y \in S\\),
+
+\\[
+f(y) \geq f(x) + \nabla f(x)^T (y - x) + \dfrac{m}{2} || y - x ||^2\_2.
+\\]
+
+We will find \\(\tilde{y}\\) that minimizes the right-hand side, and we have that it serves as a lower-bound for any \\(y\\) on the left-hand side.
+
+The right-hand side is a convex function in \\(y\\), hence we take the gradient and solve for \\(0\\):
+
+\\[
+\nabla f(x) + m(\tilde{y} - x) = 0 \implies \tilde{y} = x - \dfrac{1}{m} \nabla f(x).
+\\]
+
+Plugging this in,
+
+\\[
+f(y) \geq f(x) - \dfrac{1}{m} || \nabla f(x) ||^2\_2 + \dfrac{1}{2m} || \nabla f(x) ||^2\_2 = f(x) - \dfrac{1}{2m} || \nabla f(x) ||^2\_2.
+\\]
+
+This holds for any \\(y \in S\\), hence we set \\(y = x^{\star}\\) and see that
+
+\\[
+p^{\star} \geq f(x) - \dfrac{1}{2m} || \nabla f(x) ||^2\_2
+\\]
+
+as desired.
+
+**Corollary**. Let \\(f\\) be an \\(m\\) strongly convex function on \\(S\\) and \\(p^{\star}\\) the minimum value of \\(f\\). Then for any \\(x \in S\\), if
+
+\\[
+\lvert \lvert \nabla f(x) \rvert \rvert^2\_2 \leq (2m\epsilon)^{1/2},
+\\]
+
+we have that
+
+\\[
+f(x) - p^{\star} \leq \epsilon.
+\\]
+
+We can also bound a point's distance from the minimizer using the gradient.
+
+**Proposition**. Let \\(f\\) be an \\(m\\) strongly convex function on \\(S\\) and \\(x^{\star}\\) the minimizer of \\(f\\). Then for any \\(x \in S\\),
+
+\\[
+\lvert \lvert x^{\star} - x \rvert \rvert \leq \dfrac{2}{m} || \nabla f(x) ||\_2.
+\\]
+
+**Proof**. By the first-order characterization of \\(m\\) strong convexity,
+
+\\[
+p^{\star} \geq f(x) + \nabla f(x)^T (x^{\star} - x) + \dfrac{m}{2} || x^{\star} - x ||^2\_2 \geq f(x) - || \nabla f(x) ||\_2 || x^{\star} - x ||\_2 + \dfrac{m}{2} || x^{\star} - x ||^2\_2
+\\]
+
+via Cauchy Schwarz.
+
+As \\(p^{\star} \leq f(x)\\),
+
+\\[
+0 \geq - || \nabla f(x) ||\_2 ||x^{\star} - x||\_2 + \dfrac{m}{2} || x^{\star} - x ||^2\_2
+\\]
+
+hence
+
+\\[
+\lvert \lvert \nabla f(x) \rvert \rvert\_2 || x^{\star} - x || \geq \dfrac{m}{2} || x^{\star} - x ||^2\_2
+\\]
+
+meaning that
+
+\\[
+\dfrac{2}{m} || \nabla f(x) ||\_2 \geq ||x^{\star} - x||\_2
+\\]
+
+as desired.
+
+
+#### Smoothness {#smoothness}
+
+Strong convexity imposes a lower bound on the Hessian of a function. We can similarly impose an upper bound.
+
+**Definition**. We say that a function \\(f\\) is _\\(M\\) smooth_ on \\(S\\) if
+
+\\[
+\nabla^2 f(x) \leq MI
+\\]
+
+for all \\(x \in S\\).
+
+**Proposition**. Let \\(f\\) be an \\(M\\) smooth function. Then for all \\(x, y \in S\\),
+
+\\[
+f(y) \leq f(x) + \nabla f(x)^T (y - x) + \dfrac{M}{2} || y - x ||^2\_2.
+\\]
+
+**Proof**. Once again by Taylor's and mean value theorem, we have that
+
+\\[
+f(y) = f(x) + \nabla f(x)^T (y - x) + \dfrac{1}{2} (y - x)^T \nabla^2 f(z) (y - x)
+\\]
+
+for some \\(z\\) on the line segment \\([x, y]\\).
+
+By \\(M\\) smoothness, we then have that
+
+\\[
+f(y) \leq f(x) + \nabla f(x)^T (y - x) + \dfrac{M}{2} || y - x ||^2\_2.
+\\]
+
+**Proposition**. Let \\(f\\) be an \\(M\\) smooth function with optimal value \\(p^{\star}\\). Then for any \\(x \in S\\),
+
+\\[
+p^{\star} \leq f(x) - \dfrac{1}{2M} || \nabla f(x) ||^2\_2.
+\\]
+
+**Proof**. We will employ a similar strategy as in the convexity case, with some changes. We know that for all \\(y \in S\\),
+
+\\[
+f(y) \leq f(x) + \nabla f(x)^T (y - x) + \dfrac{M}{2} || y - x ||^2\_2.
+\\]
+
+We first find \\(\tilde{y}\\) which _minimizes_ the right-hand side. From before, we found that
+
+\\[
+\tilde{y} = x - \dfrac{1}{m} \nabla f(x).
+\\]
+
+Plugging this in,
+
+\\[
+p^{\star} \leq f(\tilde{y}) \leq f(x) - \dfrac{1}{2M} || \nabla f(x) ||^2\_2.
+\\]
+
+
+### Conditioning {#conditioning}
+
+**Definition** (Condition Number). Consider an unconstrained optimization problem with an objective that is \\(m\\) strongly convex and \\(M\\) smooth. We call \\(K = M/m\\) the _condition number_ of the problem.
+
+**Definition** (Width). We define the _width_ of a set \\(C\\) in direction \\(q\\) with unit-norm as
+
+\\[
+W(C, q) = \sup\_{z \in C} q^T z - \inf\_{z \in C} q^T z.
+\\]
+
+**Definition**. We define the _maximum_ width of a set \\(C\\) as
+
+\\[
+W\_{max} = \sup\_{q, ||q||\_2 = 1} W(C, q).
+\\]
+
+We define the _minimum_ width of a set \\(C\\) as
+
+\\[
+W\_{min} = \inf\_{q, ||q||\_2 = 1} W(C, q).
+\\]
+
+**Definition**. The _condition number_ of a set \\(C\\) is
+
+\\[
+\textbf{cond}( C) = \dfrac{W\_{max}^2}{W\_{min}^2}.
+\\]
+
+**Definition**. The \\(\alpha\\) _sublevel set_ of \\(f\\) is the set
+
+\\[
+C\_{\alpha} = \lbrace x : f(x) \leq \alpha \rbrace.
+\\]
+
+**Proposition**. Consider a function that is \\(m\\) strongly convex and \\(M\\) smooth. Then, for any \\(\alpha\\),
+
+\\[
+\textbf{cond}(C\_{\alpha}) \leq K = M/m.
+\\]
+
+**Proof**. Observe that by the first-order characterizations,
+
+\\[
+p^{\star} + \dfrac{m}{2} || y - x^{\star} ||^2\_2 \leq f(y) \leq p^{\star} + \dfrac{M}{2} || y - x^{\star} ||^2\_2.
+\\]
+
+Hence, defining
+
+\\[
+B\_{inner} = \lbrace y | ||y-x^{\star}||\_2 \leq (2(\alpha - p^{\star})/M)^{1/2} \rbrace
+\\]
+
+and
+
+\\[
+B\_{outer} = \lbrace y | ||y-x^{\star}||\_2 \leq (2(\alpha - p^{\star})/m)^{1/2} \rbrace
+\\]
+
+we have that
+
+\\[
+B\_{inner} \subseteq C\_{\alpha} \subseteq B\_{outer}.
+\\]
+
+Dividing the squared radii of the balls, we have an upper-bound on the condition number of \\(C\_{\alpha}\\):
+
+\\[
+\textbf{cond}(C\_{\alpha}) \leq \dfrac{M}{m}
+\\]
+
+as desired.
+
+
+### Descent Methods {#descent-methods}
+
+Descent methods are algorithms that solve unconstrained minimization problems by iteratively computing a direction to perturb the current solution, and the scale of said direction. Formally, on iteration \\(k + 1\\), they update the current solution via
+
+\\[
+x^{(k+1)} = x^{(k)} + t^{(k)} \Delta x^{(k)}
+\\]
+
+where \\(t^{(k)} > 0\\). \\(t^{(k)}\\) and \\(\Delta x^{(k)}\\) are chosen such that \\(f(x^{(k+1)}) < f(x^{(k)})\\), i.e. we gradually aproach the optimal solution.
+
+Note that by the first-order characterization of convexity, we require that
+
+\\[
+\nabla f(x^{(k)})^T \Delta x^{(k)} < 0,
+\\]
+
+otherwise there is no hope of finding a more optimal solution.
+
+How the direction \\(\Delta x^{(k)}\\) is computed depends on the specific algorithm. Several methods exist to compute \\(t^{(k)}\\), some of which are covered below.
+
+
+#### Exact Line Search {#exact-line-search}
+
+Simply set \\(t^{(k)}\\) such that the objective is minimized:
+
+\\[
+t^{(k)} = \arg \min\_{s > 0} f(x^{(k)} + s \Delta x^{(k)}).
+\\]
+
+While it is true that we must solve another optimization problem, this problem is one-dimensional and in practice is very easy to solve.
+
+
+#### Backtracking {#backtracking}
+
+A simplified backtracking algorithm to compute \\(t\\) would be to initially set \\(t^{(k)}\\) to 1, then while \\(f(x^{(k)} + t^{(k)} \Delta x^{(k)}) > f(x^{(k)})\\), halve \\(t^{(k)}\\).
+
+
+### Gradient Descent {#gradient-descent}
+
+Gradient descent provides one natural option to choose the descent direction: the negative of the gradient. Until the stopping criterion is satisfied (e.g. the current gradient is small enough), we update the current solution via
+
+\\[
+x^{(k+1)} = x^{(k)} - t^{(k)} \nabla f(x^{(k)})
+\\]
+
+where \\(t^{(k)}\\) is computed by either exact line search or backtracking.
+
+**Proposition**. Consider some unconstrained minimization problem over \\(f\\), where \\(f\\) is \\(m\\) strongly convex and \\(M\\) smooth. If we were to perform gradient descent with exact line search beginning at \\(x^{(0)}\\), we would reach an \\(\epsilon\\) optimal solution at step \\(N\\) where
+
+\\[
+N \leq \dfrac{\log ((f(x^0) - p^{\star}) / \epsilon) }{\log(1/c)},
+\\]
+
+note that \\(c = 1 - m/M\\).
+
+**Proof**. By \\(M\\) smoothness and the first-order characterization, we have that
+
+\\[
+f(x - t \nabla f(x)) \leq f(x) - t ||\nabla f(x)||^2\_2 + \dfrac{Mt^2}{2} || \nabla f(x) ||^2\_2.
+\\]
+
+As we use exact line search, we can improve our bound by finding \\(t\\) that minimizes the right-hand side, which is convex. We take the gradient with respect to \\(t\\) and set it to 0:
+
+\\[
+0 = - || \nabla f(x) ||^2\_2 + Mt || \nabla f(x) ||^2\_2 \implies t = \dfrac{1}{M}.
+\\]
+
+Substituting this in,
+
+\\[
+f(x - t \nabla f(x)) \leq f(x) - \dfrac{|| \nabla f(x) ||^2\_2}{M} + \dfrac{|| \nabla f(x) ||^2\_2}{2M} \leq f(x) - \dfrac{|| \nabla f(x) ||^2\_2}{2M}.
+\\]
+
+Hence,
+
+\\[
+f(x - t \nabla f(x)) - p^{\star} \leq (f(x) - p^{\star}) - \dfrac{|| \nabla f(x) ||^2\_2}{2M},
+\\]
+
+i.e. we always improve our optimality gap by \\[\frac{1}{2M} || \nabla f(x) ||^2\_2.\\]
+
+Recall that with \\(m\\) strong convexity, the gradient provides us with a bound on our suboptimality:
+
+\\[
+f(x) - p^{\star} \leq \dfrac{1}{2m} || \nabla f(x) ||^2\_2.
+\\]
+
+Hence, we can restate our bound as
+
+\\[
+f(x - t \nabla f(x)) - p^{\star} \leq (f(x) - p^{\star}) - \dfrac{m}{M} (f(x) - p^{\star}) = c (f(x) - p^{\star}).
+\\]
+
+By induction,
+
+\\[
+f(x^{(k)}) - p^{\star} \leq c^k (f(x^{(0)}) - p^{\star}).
+\\]
+
+To have that \\(f(x^{(k)} - p^{\star}) \leq \epsilon\\), it is sufficient to have
+
+\\[
+c^k \leq \frac{\epsilon}{f(x^{(0)}) - p^{\star}}
+\\]
+
+meaning that it is sufficient for
+
+\\[
+k \leq \dfrac{\log \left( \dfrac{\epsilon}{f(x^{(0)}) - p^{\star}} \right)}{\log( c)} = \dfrac{\log \left( (f(x^{(0)}) - p^{\star}) / \epsilon \right)}{\log(1/c)}
+\\]
+
+as desired.
