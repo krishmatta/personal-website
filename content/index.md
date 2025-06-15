@@ -10,6 +10,7 @@ Hi, I'm Krish Matta.
 
 ## Work
 I'm an undergraduate student majoring in computer science and minoring in mathematical sciences at Carnegie Mellon University. I have previously worked for or collaborated with:
+- [The D. E. Shaw Group](https://www.deshaw.com/) (2025).
 - [Databricks](https://www.databricks.com/) (2024).
 - [University of Delaware Safro Research Group](https://safroresearch.blogspot.com/) (2021 - 2023).
 - [Roblox](https://www.roblox.com/) (2023).
