@@ -10,7 +10,8 @@ The Tortoise and Hare algorithm is an algorithm used to determine if a linked li
 
 The algorithm maintains two pointers, one which moves normally (tortoise), and one which moves at twice the speed (hare). If the pointers ever meet, then a cycle exists. If either pointer reaches the end of the list, then no cycle exists.
 
-In Python:
+
+## Implementation {#implementation}
 
 ```python
 def tortoise_and_hare(head):
