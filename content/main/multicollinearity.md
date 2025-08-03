@@ -2,7 +2,7 @@
 title: "Multicollinearity"
 author: ["Krish Matta"]
 date: 2025-07-27T00:00:00-04:00
-lastmod: 2025-07-27T00:00:00-04:00
+lastmod: 2025-08-03T00:00:00-04:00
 draft: false
 ---
 
@@ -31,4 +31,4 @@ Hence, small perturbations in the training data may cause large changes in \\(\h
 
 Multicollinearity can be detected by checking the correlation matrix of the predictors.
 
-Another way to detect multicollinearity is by the [variance inflation factor]({{< relref "variance_inflation_factor.md" >}}) (VIF).
+Another way to detect multicollinearity is by the [Variance Inflation Factor]({{< relref "variance_inflation_factor.md" >}}) (VIF).
