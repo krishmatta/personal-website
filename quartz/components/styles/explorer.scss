@@ -202,6 +202,12 @@ button.desktop-explorer {
   flex-shrink: 0;
 }
 
+li:has(> .folder-outer > .content:empty)
+  > .folder-container
+  > .folder-icon {
+  display: none;
+}
+
 li:has(> .folder-outer:not(.open)) > .folder-container > svg {
   transform: rotate(-90deg);
 }
