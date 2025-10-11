@@ -15,7 +15,10 @@ export const sharedPageComponents: SharedLayout = {
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
-    Component.Breadcrumbs(),
+    Component.ConditionalRender({
+      component: Component.Breadcrumbs(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.Export(),
@@ -24,15 +27,20 @@ export const defaultContentPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Search(),
-    Component.DesktopOnly(Component.Explorer({
-      folderClickBehavior: "link",
+    Component.Flex({
+      components: [
+        {
+          Component: Component.Search(),
+          grow: true,
+        },
+      ],
+    }),
+    Component.Explorer({
       filterFn: (node) => {
-        const include = new Set(["main", "reference"])
-	return include.has(node.name.toLowerCase())
+                const include = new Set(["main", "reference"])
+                return include.has(node.displayName.toLowerCase())
       },
-    })),
-    Component.DesktopOnly(Component.TableOfContents()),
+    }),
   ],
   right: [
   ],
@@ -44,14 +52,21 @@ export const defaultListPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Search(),
-    Component.DesktopOnly(Component.Explorer({
-      folderClickBehavior: "link",
+    Component.Flex({
+      components: [
+        {
+          Component: Component.Search(),
+          grow: true,
+        },
+        { Component: Component.Darkmode() },
+      ],
+    }),
+    Component.Explorer({
       filterFn: (node) => {
-        const include = new Set(["main", "reference"])
-	return include.has(node.name.toLowerCase())
+                const include = new Set(["main", "reference"])
+                return include.has(node.displayName.toLowerCase())
       },
-    })),
+    }),
   ],
   right: [],
 }
