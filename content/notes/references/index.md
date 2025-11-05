@@ -1,7 +1,7 @@
 ---
-title: "Main"
+title: "References"
 author: ["Krish Matta"]
 draft: false
 ---
 
-Notes on my original thoughts.
+Notes on others' work.

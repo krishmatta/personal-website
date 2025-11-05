@@ -3,7 +3,6 @@ title: "Reverse Auctions for Group Decision-Making"
 author: ["Krish Matta"]
 date: 2025-02-25T00:00:00-05:00
 lastmod: 2025-02-25T00:00:00-05:00
-tags: ["article"]
 draft: false
 ---
 
