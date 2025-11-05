@@ -24,7 +24,7 @@ This website is a collection of my work, organized into the following sections:
 - [Articles](/articles/) — polished writing.
 - [Notes](/notes/) — shorter, evolving notes. Includes:
   - [Concepts](/notes/concepts/) — notes on various concepts.
-  - [References](/notes/references) — notes on the others' work.
+  - [References](/notes/references) — notes on others' work.
 - [Photography](/photography/) — photo albums.
 
 # Other Sites
