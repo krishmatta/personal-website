@@ -34,6 +34,11 @@ You can find me elsewhere on the internet at:
 - [Raindrop.io](https://app.raindrop.io/my/54129615).
 - [X](https://x.com/krishmatta).
 
+Some personal websites of friends:
+- [Anish Rajeev](https://anish.ink/)
+- [Rohan Jain](https://www.rohanja.in/)
+- [Sahil Parikh](https://sahilparikh.net/)
+
 # Contact
 If you'd like to get in touch, you may contact me via email at [self@krishmatta.net](mailto:self@krishmatta.net).
 
