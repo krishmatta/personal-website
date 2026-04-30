@@ -30,6 +30,7 @@ This website is a collection of my work, organized into the following sections:
 # Other Sites
 You can find me elsewhere on the internet at:
 - [GitHub](https://github.com/krishmatta).
+- [last.fm](https://www.last.fm/user/krishmatta).
 - [LinkedIn](https://www.linkedin.com/in/krishmatta/).
 - [Raindrop.io](https://app.raindrop.io/my/54129615).
 - [X](https://x.com/krishmatta).
