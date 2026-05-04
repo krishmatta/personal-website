@@ -37,7 +37,7 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.Explorer({
       filterFn: (node) => {
-                const include = new Set(["articles", "photography", "notes", "concepts", "references", "journal"])
+                const include = new Set(["articles", "photography", "notes", "concepts", "references", "journal", "travel"])
                 return include.has(node.displayName.toLowerCase())
       },
     }),
@@ -63,7 +63,7 @@ export const defaultListPageLayout: PageLayout = {
     }),
     Component.Explorer({
       filterFn: (node) => {
-                const include = new Set(["articles", "photography", "notes", "concepts", "references", "journal"])
+                const include = new Set(["articles", "photography", "notes", "concepts", "references", "journal", "travel"])
                 return include.has(node.displayName.toLowerCase())
       },
     }),
