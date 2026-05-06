@@ -37,6 +37,7 @@ You can find me elsewhere on the internet at:
 
 Some personal websites of friends:
 - [Anish Rajeev](https://anish.ink/)
+- [Harry Wang](https://www.harrycodes.com/)
 - [Rohan Jain](https://www.rohanja.in/)
 - [Sahil Parikh](https://sahilparikh.net/)
 
