@@ -1,5 +1,5 @@
 ---
-title: "Articles"
+title: "Writing"
 author: ["Krish Matta"]
 draft: false
 ---

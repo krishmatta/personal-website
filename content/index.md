@@ -21,7 +21,7 @@ Academically, I'm interested in computer science and mathematics, with a particu
 
 # About the Site
 This website is a collection of my work, organized into the following sections:
-- [Articles](/articles/) — polished writing.
+- [Writing](/writing/) — polished writing.
 - [Notes](/notes/) — shorter, evolving notes. Includes:
   - [Concepts](/notes/concepts/) — notes on various concepts.
   - [References](/notes/references) — notes on others' work.
