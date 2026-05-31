@@ -2,11 +2,20 @@
 title: "Reading List"
 author: ["Krish Matta"]
 date: 2026-05-04T00:00:00-04:00
-lastmod: 2026-05-04T00:00:00-04:00
+lastmod: 2026-05-31T00:00:00-04:00
 draft: false
 ---
 
 ## Reading {#reading}
+
+**2026-05-28**
+: _Training for the Uphill Athlete: A Manual for Mountain Runners and Ski Mountaineers_, Steve House, Scott Johnston, Kilian Jornet
+
+**2026-05-27**
+: _Algebra_, Michael Artin
+
+**2026-05-14**
+: _The Brothers Karamazov_, Fyodor Dostoevsky
 
 **2026-02-20**
 : _Doing Good Better_, William MacAskill
@@ -29,7 +38,7 @@ draft: false
 
 ### 2024 {#2024}
 
-**2024-11-23 - 2024-11-29**
+**2024-11-23 – 2024-11-29**
 : _Goodnight Punpun_, Inio Asano
 
 **2024-11-12 – 2024-11-22**
