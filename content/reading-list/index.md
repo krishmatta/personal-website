@@ -2,7 +2,7 @@
 title: "Reading List"
 author: ["Krish Matta"]
 date: 2026-05-04T00:00:00-04:00
-lastmod: 2026-05-31T00:00:00-04:00
+lastmod: 2026-06-02T00:00:00-04:00
 draft: false
 ---
 
@@ -17,14 +17,14 @@ draft: false
 **2026-05-14**
 : _The Brothers Karamazov_, Fyodor Dostoevsky
 
-**2026-02-20**
-: _Doing Good Better_, William MacAskill
-
 
 ## Read {#read}
 
 
 ### 2026 {#2026}
+
+**2026-02-20 - 2026-06-01**
+: _Doing Good Better_, William MacAskill
 
 **2026-02-21 – 2026-03-20**
 : _The Stranger_, Albert Camus
