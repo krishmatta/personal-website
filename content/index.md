@@ -9,7 +9,8 @@ Hi, I'm Krish Matta.
 # About Me
 
 ## Work
-I'm an undergraduate student majoring in computer science and minoring in mathematical sciences at Carnegie Mellon University. I have previously worked for or collaborated with:
+I'm a machine learning engineer intern at [Gray Swan](https://www.grayswan.ai/). I graduated from Carnegie Mellon University in May 2026, where I majored in computer science and minored in mathematical sciences. I have previously worked for or collaborated with: 
+- [Andy Zou](https://andyzoujm.github.io/) (2024 - 2026).
 - [The D. E. Shaw Group](https://www.deshaw.com/) (2025).
 - [Databricks](https://www.databricks.com/) (2024).
 - [University of Delaware Safro Research Group](https://safroresearch.blogspot.com/) (2021 - 2023).
