@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Reverse Auctions for Group Decision-Making</title>
+<meta name="author" content="Krish Matta" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style>
+   a, a:visited { color: #0000ee; }
+   img { max-width: 100%; height: auto; }
+   </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<nav class="site-nav"><a href="/">Home</a> | <a href="/writing/">Writing</a> | <a href="/photography/">Photography</a> | <a href="/reading-list/">Reading List</a> | <a href="/quotes/">Quotes</a> | <a href="/travel/">Travel</a></nav>
+</div>
+<div id="content" class="content">
+<h1 class="title">Reverse Auctions for Group Decision-Making</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org4845fee">Scenario</a></li>
+<li><a href="#orgcb746b7">Intuition</a></li>
+<li><a href="#org30dc3f6">First-Price Sealed-Bid Reverse Auction</a></li>
+<li><a href="#orgc9f375a">Satisfaction Guarantees</a>
+<ul>
+<li><a href="#org5156ef8">Hostel-Goer</a></li>
+<li><a href="#orgcf8bd14">Hotel-Stayers</a></li>
+</ul>
+</li>
+<li><a href="#org4efb26e">Incentive Compatibility</a></li>
+<li><a href="#org5677ffc">Practicality</a></li>
+</ul>
+</div>
+</div>
+<p>
+I recently faced a dilemma with a group of friends in which <a href="https://en.wikipedia.org/wiki/Auction_theory">auction theory</a> provided a nice solution to ensure everyone's satisfaction. Due to its elegance and potential application to similar coordination problems, I detail the solution below as well as some intuition for why it works.
+</p>
+
+<div id="outline-container-org4845fee" class="outline-2">
+<h2 id="org4845fee">Scenario</h2>
+<div class="outline-text-2" id="text-org4845fee">
+<p>
+You and \(n-1\) friends are traveling to Spain next week. Due to unforeseen circumstances, the hotel is booked for only \(n-1\) people, hence one person must find other housing. However, because of the short-term notice as well as money constraints, the only option is a hostel where that person must live with others they do not know. No one in the group is eager to live in the hostel as the hotel is particularly nice. How can we fairly pick the hostel-goer?
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcb746b7" class="outline-2">
+<h2 id="orgcb746b7">Intuition</h2>
+<div class="outline-text-2" id="text-orgcb746b7">
+<p>
+If asked to perform something unpleasant, every person has a minimum amount of compensation they would want in order to perform said task. Thus, we can think to solve the dilemma by providing money to the hostel-goer as consolation. Under this framework, we must decide who is picked to be the hostel-goer and how much compensation they should receive while respecting everyone's interests. A flawed system would allow the hostel-goer to demand compensation exceeding what hotel-stayers are willing to pay.
+</p>
+
+<p>
+Interestingly, auction theory provides a solution that guarantees satisfaction for all. In particular, we can think of the scenario as a reverse auction. In a reverse auction, the typical roles are reversed: there is one buyer and several sellers. The sellers compete to sell their good to the buyer. The scenario can be framed as a reverse auction by thinking of everyone in the group as a seller, selling away their right to stay in the hotel. The buyer is the collective group, buying away someone's right to stay in the hotel.
+</p>
+
+<p>
+The high-level idea is to pick the hostel-goer through some reverse auction system, providing them with compensation. The remaining hotel-stayers evenly split the payout of the hostel-goer's compensation.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org30dc3f6" class="outline-2">
+<h2 id="org30dc3f6">First-Price Sealed-Bid Reverse Auction</h2>
+<div class="outline-text-2" id="text-org30dc3f6">
+<p>
+The reverse auction can be executed via a first-price sealed-bid reverse auction. Essentially, every person in the group writes the <i>minimum compensation they need to stay in the hostel</i> on a paper slip. This slip is their bid to sell their right to the hotel. Every person submits their slip to a box, while keeping their bid hidden. After everyone submits their bid, the slips are inspected to determine the lowest bidder. The lowest bidder is deemed the hostel-goer, and the remaining \(n - 1\) group evenly splits paying the hostel-goer's compensation.
+</p>
+
+<p>
+A digression: depending on the group of people, the minimum compensation may be very high. In the case where it is higher than the price of a hotel room, it's obviously a better choice to pick the hotel room.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc9f375a" class="outline-2">
+<h2 id="orgc9f375a">Satisfaction Guarantees</h2>
+<div class="outline-text-2" id="text-orgc9f375a">
+<p>
+Assuming that everyone is truthful in bidding, the above system can be shown to be "satisfying" in that every person is satisfied at the end. We can inspect the satisfaction of every person at the end of the auction.
+</p>
+</div>
+
+<div id="outline-container-org5156ef8" class="outline-3">
+<h3 id="org5156ef8">Hostel-Goer</h3>
+<div class="outline-text-3" id="text-org5156ef8">
+<p>
+The hostel-goer is satisfied. Yes, they must live in the hostel, but they are receiving the minimum compensation they asked for to live in the hostel. If they feel unsatisfied, then the compensation they wrote on the slip does not match their true desired compensation.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcf8bd14" class="outline-3">
+<h3 id="orgcf8bd14">Hotel-Stayers</h3>
+<div class="outline-text-3" id="text-orgcf8bd14">
+<p>
+Every hotel-stayer is satisfied, assuming they are fair. A fair person who would need \(x\) dollars to stay in the hostel should understand why the hostel-goer needs \(y\) dollars to stay in the hotel, where \(y < x\). If not, then this person is unfair; they expect different standards between themself and the hostel-goer. Thus, assuming fairness, every hotel-stayer should be satisfied in paying \(y / (n - 1) < x\) dollars to the hostel-goer.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4efb26e" class="outline-2">
+<h2 id="org4efb26e">Incentive Compatibility</h2>
+<div class="outline-text-2" id="text-org4efb26e">
+<p>
+As with all first-price auctions, the above mechanism is unfortunately not incentive compatible, meaning that people are not incentivized to bid their true value. Instead, group members are incentivized to "shade upwards," in which they bid higher than their true desired compensation in an attempt to increase their payout, if they were the lowest bidder.
+</p>
+
+<p>
+Unfortunately, this bidding strategy can lead to an inefficient allocation. It is very possible for the person with the true minimum required compensation to shade upwards enough such that someone else is picked to be the hostel-goer. In simpler terms, the person who is "most okay" with living in the hostel is not actually chosen to be in the hostel, a clear shortcoming of this approach.
+</p>
+
+<p>
+A typical solution to amending the incentive incompatibility of a first-price auction is to instead use a Vickrey auction. Everything proceeds as above, but in the end, the hostel-goer is <i>instead paid the compensation of the second lowest bid</i>.
+</p>
+
+<p>
+One can show that everyone remains satisfied in this reverse Vickrey auction, but due to the unique circumstances, it is actually also incentive incompatible, contrary to what is typically expected of a Vickrey auction. In particular, by paying out the value of the second minimum bid, group members are now encouraged to shade downwards. In the event that they are selected to be a hostel-goer, shading downwards has no effect on their compensation. In the event that they are a hotel-stayer, shading downwards decreases the amount of compensation they would need to pay out. Hence, people are still not incentivized to bid their true value.
+</p>
+
+<p>
+Unfortunately, creating an incentive compatible mechanism is quite difficult and I haven't yet figured out a way to do so, or if it is even possible. I suspect that randomization is required. In the meanwhile, I recommend the first-price auction as it incurs less cost on the hotel-stayers.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5677ffc" class="outline-2">
+<h2 id="org5677ffc">Practicality</h2>
+<div class="outline-text-2" id="text-org5677ffc">
+<p>
+Auctions only work if everyone is familiar with the rules. Hence, if you were to actually employ this in some real-life scenario, I highly recommend you outline the exact rules of the auction in your initial proposal. Otherwise, people won't properly bid and the resulting allocation is inefficient. The above analysis also assumes that everyone is rational, thus it's a good idea to give some time to people to think about their decision and the rules of the auction rather than rush them.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: February 25, 2025</p>
+<p class="author">Author: Krish Matta</p>
+</div>
+</body>
+</html>

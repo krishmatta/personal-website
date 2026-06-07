@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Protect Your Hearing</title>
+<meta name="author" content="Krish Matta" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style>
+   a, a:visited { color: #0000ee; }
+   img { max-width: 100%; height: auto; }
+   </style>
+</head>
+<body>
+<div id="preamble" class="status">
+<nav class="site-nav"><a href="/">Home</a> | <a href="/writing/">Writing</a> | <a href="/photography/">Photography</a> | <a href="/reading-list/">Reading List</a> | <a href="/quotes/">Quotes</a> | <a href="/travel/">Travel</a></nav>
+</div>
+<div id="content" class="content">
+<h1 class="title">Protect Your Hearing</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgefd5827">What is Hearing Damage</a></li>
+<li><a href="#orgbf5f198">Consequences of Hearing Damage</a></li>
+<li><a href="#orgb16f257">Hearing Damage is Everywhere</a></li>
+<li><a href="#org6b57e83">How to Protect Your Hearing</a></li>
+</ul>
+</div>
+</div>
+<p>
+I recently attended <a href="https://www.monsterjam.com/en-us/">Monster Jam</a> in Pittsburgh's PPG Paints Arena, an event where drivers compete in races with monster trucks. Upon arriving at the show, my first observation was <i>how loud</i> everything was. Having never attended a motorsport event before, I hadn't anticipated the sound and didn't bring hearing protection with me. Luckily, my friends and I were quickly able to purchase earplugs, allowing us to enjoy the show without worry.
+</p>
+
+<p>
+Shockingly, I observed far too many adults in that arena without hearing protection at all. More shockingly, many children didn't either—I observed a child in front of me screaming while he ineffectively held his hands up to his ears to shield from the noise. Perhaps most shocking of all, I observed many children with hearing protection <i>whose parents weren't wearing any at all</i>. Why would you protect your child's hearing but not your own?
+</p>
+
+<p>
+The importance of hearing protection is understated to the general population and is only emphasized when it's occupation related (e.g. construction). As a kid, we are cautioned about dental hygiene, seatbelt safety, and drugs, but rarely, if ever, about hearing damage, which may become increasingly prevalent with the ubiquity of earbuds.
+</p>
+
+<p>
+Below, I make the case for preventing hearing damage, covering what hearing damage entails, how common it is, and how to protect yourself.
+</p>
+
+<div id="outline-container-orgefd5827" class="outline-2">
+<h2 id="orgefd5827">What is Hearing Damage</h2>
+<div class="outline-text-2" id="text-orgefd5827">
+<p>
+Hearing damage typically manifests itself as <b>hearing loss</b>, in which your ability to hear sounds is reduced; <b>tinnitus</b>, in which your brain perceives noise that is not truly there, preventing you from ever hearing silence again; or <b>hyperacusis</b>, in which everyday sounds become painful or overwhelming.
+</p>
+
+<p>
+All three are the result of damage to your <i>cochlea</i>, a snail-shaped structure within your skull containing approximately 15,000 sensory hair cells that convert sound waves into electrical signals for your brain to interpret as sound. These hair cells work by bending as sound waves pass over them, triggering the electrical signal. The louder the sound, the harder they bend, sometimes to the point of permanent damage or cell death—leading to hearing damage. Furthermore, these hair cells do not regenerate, meaning that damage is (at the time of this writing) irreversible.
+</p>
+
+<p>
+Hence, you should think of hearing damage as such. You have a finite pool of hair cells. Every loud occurrence you are subjected to, such as a night at a loud bar, may kill a small number of hair cells, which is not immediately perceivable. But subject yourself to this multiple times, and eventually, your hearing will indeed become noticeably worse. Furthermore, particularly loud events such as standing next to a speaker at the club can kill enough hair cells for you to perceive hearing damage <i>from a single event</i>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbf5f198" class="outline-2">
+<h2 id="orgbf5f198">Consequences of Hearing Damage</h2>
+<div class="outline-text-2" id="text-orgbf5f198">
+<p>
+The immediate consequences of hearing damage are intuitive: diminished ability to hear conversations, emotional distress, and overall lower quality of life. However, hearing damage can have more of an impact than many realize.
+</p>
+
+<p>
+In 2024, a Lancet Commission performed <a href="https://chronicdisease.org/wp-content/uploads/2024/12/Lancet-2024.pdf">a meta-analysis of longitudinal cohort studies regarding dementia</a> and <i>identified hearing loss as the single largest preventable risk factor</i>. Specifically, eliminating hearing loss alone would reduce dementia cases by an estimated 7%, more than depression, traumatic brain injury, physical inactivity, diabetes, smoking, obesity, hypertension, excessive alcohol, air pollution, and even visual loss. There are many hypotheses as to why hearing loss causes dementia. One is cognitive load: with hearing loss, processing speech requires significantly more effort, diverting cognitive resources away from memory and other functions. Another is brain atrophy, in which the parts of the brain responsible for processing audio physically shrink due to less usage.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb16f257" class="outline-2">
+<h2 id="orgb16f257">Hearing Damage is Everywhere</h2>
+<div class="outline-text-2" id="text-orgb16f257">
+<p>
+Hearing damage is everywhere, and can very well happen to you if you do not take proper precautions. According to the <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7960691/">Global Burden of Disease Study 2019</a>, 1.57 billion (or approximately 1 in 5) people worldwide suffered from hearing loss, making it the third-largest cause of disability. Streamer Andrea Botez <a href="https://www.youtube.com/watch?v=zImH6Ie6FHk">recently lost her hearing in one ear</a>, and hasn't yet recovered two months later. She attributes it to attending raves and standing next to speakers without any hearing protection. Bryan Johnson, widely considered the most health-conscious person in the world, <a href="https://x.com/bryan_johnson/status/1980400536886313187?s=20">has mild to moderate hearing loss</a> and decided to begin wearing hearing aids. Grimes suffers from tinnitus and <a href="https://www.nme.com/news/music/grimes-82-1267144">previously canceled a tour</a> due to it. One Reddit user <a href="https://www.reddit.com/r/tinnitus/comments/16s6fxq/tinnitus_from_nightclub/">developed tinnitus after a single night at a club at age 22</a> (an update 1.5 years later indicates that they are thankfully no longer afflicted). 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6b57e83" class="outline-2">
+<h2 id="org6b57e83">How to Protect Your Hearing</h2>
+<div class="outline-text-2" id="text-org6b57e83">
+<p>
+Hearing damage is serious, irreversible, and common. Fortunately, preventing it is remarkably simple and cheap.
+</p>
+
+<p>
+The easiest way to protect your hearing is to wear earplugs in loud settings. When I say this, I want to emphasize that <i>you likely underestimate what environments are dangerously loud</i>. You should not only wear them at construction sites or gun ranges, but also at concerts, nightclubs, movies, sporting events, and airplanes. Sound is measured in decibels (dB), and exposure to sounds above 85 dB can cause hearing damage, with risk significantly increasing as volume and length of exposure rise. For reference:
+</p>
+
+<div style="display: flex; justify-content: center;">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Environment</th>
+<th scope="col" class="org-left">dB Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Normal conversation</td>
+<td class="org-left">60–70 dB</td>
+</tr>
+
+<tr>
+<td class="org-left">Movie theater</td>
+<td class="org-left">74–104 dB</td>
+</tr>
+
+<tr>
+<td class="org-left">Airplane cabin</td>
+<td class="org-left">80–85 dB</td>
+</tr>
+
+<tr>
+<td class="org-left">Nightclub</td>
+<td class="org-left">82–106 dB</td>
+</tr>
+
+<tr>
+<td class="org-left">Concert / music festival</td>
+<td class="org-left">95–115 dB</td>
+</tr>
+
+<tr>
+<td class="org-left">Sporting event</td>
+<td class="org-left">95–110 dB</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<p>
+<i>Sources: <a href="https://www.cdc.gov/niosh/topics/noise/">NIOSH Noise and Hearing Loss Prevention</a>, <a href="https://www.who.int/activities/making-listening-safe">WHO Make Listening Safe</a>, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6438925/">National Acoustic Laboratories</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/29545611/">Journal of Exposure Science</a>, <a href="https://news.northeastern.edu/2022/05/26/movie-theater-hearing-damage/">Northeastern University</a>, <a href="https://digitalcommons.newhaven.edu/cgi/viewcontent.cgi?article=1007&amp;context=sportmanagement-facpubs">University of New Haven</a>, and <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2582665/">Loud Music Listening (PMC)</a>.</i>
+</p>
+
+<p>
+At 85 dB, damage begins after 8 hours of exposure. This safe exposure time halves with every 3 dB increase. Hence, at 100 dB (which you experience at an average nightclub), damage begins after 15 minutes. Most people spend far more time than 15 minutes at a nightclub.
+</p>
+
+<p>
+Many fear that earplugs will "ruin" the experience, but I've found myself to be able to hear music and conversations <i>better</i> when the environment is particularly loud. Earplugs diminish much of the background noise, enhancing music and conversations. I prefer the Loop Quiet 2 Ear Plugs ($24.99), which have a noise reduction rating of 14 dB. As decibels are a logarithmic scale, this means that sounds will feel roughly half as loud. The only downside to wearing earplugs is looking a little silly, which is not much of a trade-off.
+</p>
+
+<p>
+You should also be mindful of your headphone volume, which can also cause damage when excessive. If you're on iOS, you can enable Headphone Safety in Settings to cap the volume at 75 dB, which I've found easy to get used to.
+</p>
+
+<p>
+Certain drugs (deemed <i>ototoxic</i>) can also inflict hearing damage. Before taking any medication, you should research its full side effect profile (very easy to do in the age of LLMs) and weigh the costs and benefits. Some well-known ototoxic drugs include chemotherapy agents and aminoglycoside antibiotics, but many commonly prescribed medications carry ototoxic risk that patients are rarely warned about. These include Wellbutrin (bupropion), Accutane (isotretinoin), Cialis (tadalafil), hydroxychloroquine, and high-dose ibuprofen and aspirin. The ototoxic risk of these latter medications is rare as most people take them without any hearing issues, but it does happen, and those affected are often blindsided. This is not to say that you should never take these medications, but instead to inform yourself of the risk and to weigh the potential tradeoffs.
+</p>
+
+<p>
+There's no excuse not to protect your hearing, considering how severe the consequences are and how simple it is.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: April 15, 2026</p>
+<p class="author">Author: Krish Matta</p>
+</div>
+</body>
+</html>
