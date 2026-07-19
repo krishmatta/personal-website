@@ -193,11 +193,20 @@
   .org-svg { }
 </style>
 <style>
+   body {
+     max-width: 75ch;
+     margin: 0 auto;
+     padding: 0 1em;
+     font-size: 1.125rem;
+     line-height: 1.5;
+   }
+   #content { max-width: 100%; margin: 0; padding: 0; }
+
    a, a:visited { color: #0000ee; }
    img { max-width: 100%; height: auto; }
 
-   .site-nav { padding: 8px 0; margin-bottom: 1em; }
-   .site-nav a { margin-right: 1.25em; }
+   .site-nav { padding: 8px 0; margin-bottom: 1em; text-align: center; }
+   .site-nav a { margin: 0 0.625em; }
    </style>
 <script>
   window.MathJax = {
@@ -244,14 +253,14 @@
 <ul>
 <li><a href="#org4845fee">Scenario</a></li>
 <li><a href="#orgcb746b7">Intuition</a></li>
-<li><a href="#org30dc3f6">First-Price Sealed-Bid Reverse Auction</a></li>
-<li><a href="#orgc9f375a">Satisfaction Guarantees</a>
+<li><a href="#orgea927d6">First-Price Sealed-Bid Reverse Auction</a></li>
+<li><a href="#org87614d6">Satisfaction Guarantees</a>
 <ul>
-<li><a href="#org5156ef8">Hostel-Goer</a></li>
-<li><a href="#orgcf8bd14">Hotel-Stayers</a></li>
+<li><a href="#orgf630b77">Hostel-Goer</a></li>
+<li><a href="#org7db4ca2">Hotel-Stayers</a></li>
 </ul>
 </li>
-<li><a href="#org4efb26e">Incentive Compatibility</a></li>
+<li><a href="#orgc03f645">Incentive Compatibility</a></li>
 <li><a href="#org5677ffc">Practicality</a></li>
 </ul>
 </div>
@@ -286,9 +295,9 @@ The high-level idea is to pick the hostel-goer through some reverse auction syst
 </div>
 </div>
 
-<div id="outline-container-org30dc3f6" class="outline-2">
-<h2 id="org30dc3f6">First-Price Sealed-Bid Reverse Auction</h2>
-<div class="outline-text-2" id="text-org30dc3f6">
+<div id="outline-container-orgea927d6" class="outline-2">
+<h2 id="orgea927d6">First-Price Sealed-Bid Reverse Auction</h2>
+<div class="outline-text-2" id="text-orgea927d6">
 <p>
 The reverse auction can be executed via a first-price sealed-bid reverse auction. Essentially, every person in the group writes the <i>minimum compensation they need to stay in the hostel</i> on a paper slip. This slip is their bid to sell their right to the hotel. Every person submits their slip to a box, while keeping their bid hidden. After everyone submits their bid, the slips are inspected to determine the lowest bidder. The lowest bidder is deemed the hostel-goer, and the remaining \(n - 1\) group evenly splits paying the hostel-goer's compensation.
 </p>
@@ -299,26 +308,26 @@ A digression: depending on the group of people, the minimum compensation may be 
 </div>
 </div>
 
-<div id="outline-container-orgc9f375a" class="outline-2">
-<h2 id="orgc9f375a">Satisfaction Guarantees</h2>
-<div class="outline-text-2" id="text-orgc9f375a">
+<div id="outline-container-org87614d6" class="outline-2">
+<h2 id="org87614d6">Satisfaction Guarantees</h2>
+<div class="outline-text-2" id="text-org87614d6">
 <p>
 Assuming that everyone is truthful in bidding, the above system can be shown to be "satisfying" in that every person is satisfied at the end. We can inspect the satisfaction of every person at the end of the auction.
 </p>
 </div>
 
-<div id="outline-container-org5156ef8" class="outline-3">
-<h3 id="org5156ef8">Hostel-Goer</h3>
-<div class="outline-text-3" id="text-org5156ef8">
+<div id="outline-container-orgf630b77" class="outline-3">
+<h3 id="orgf630b77">Hostel-Goer</h3>
+<div class="outline-text-3" id="text-orgf630b77">
 <p>
 The hostel-goer is satisfied. Yes, they must live in the hostel, but they are receiving the minimum compensation they asked for to live in the hostel. If they feel unsatisfied, then the compensation they wrote on the slip does not match their true desired compensation.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgcf8bd14" class="outline-3">
-<h3 id="orgcf8bd14">Hotel-Stayers</h3>
-<div class="outline-text-3" id="text-orgcf8bd14">
+<div id="outline-container-org7db4ca2" class="outline-3">
+<h3 id="org7db4ca2">Hotel-Stayers</h3>
+<div class="outline-text-3" id="text-org7db4ca2">
 <p>
 Every hotel-stayer is satisfied, assuming they are fair. A fair person who would need \(x\) dollars to stay in the hostel should understand why the hostel-goer needs \(y\) dollars to stay in the hotel, where \(y < x\). If not, then this person is unfair; they expect different standards between themself and the hostel-goer. Thus, assuming fairness, every hotel-stayer should be satisfied in paying \(y / (n - 1) < x\) dollars to the hostel-goer.
 </p>
@@ -326,9 +335,9 @@ Every hotel-stayer is satisfied, assuming they are fair. A fair person who would
 </div>
 </div>
 
-<div id="outline-container-org4efb26e" class="outline-2">
-<h2 id="org4efb26e">Incentive Compatibility</h2>
-<div class="outline-text-2" id="text-org4efb26e">
+<div id="outline-container-orgc03f645" class="outline-2">
+<h2 id="orgc03f645">Incentive Compatibility</h2>
+<div class="outline-text-2" id="text-orgc03f645">
 <p>
 As with all first-price auctions, the above mechanism is unfortunately not incentive compatible, meaning that people are not incentivized to bid their true value. Instead, group members are incentivized to "shade upwards," in which they bid higher than their true desired compensation in an attempt to increase their payout, if they were the lowest bidder.
 </p>
