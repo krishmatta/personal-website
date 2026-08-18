@@ -198,29 +198,7 @@
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
-   <style>
-   body {
-     max-width: 75ch;
-     margin: 0 auto;
-     padding: 0 1em;
-     font-family: 'EB Garamond', serif;
-     background: #f2f2f2;
-     font-size: 1.125rem;
-     line-height: 1.5;
-     font-variant-numeric: oldstyle-nums;
-   }
-   #content { max-width: 100%; margin: 0; padding: 0; }
-
-   a, a:visited {
-     color: #52606d;
-     text-decoration-color: rgba(82, 96, 109, 0.35);
-     text-decoration-thickness: 1px;
-     text-underline-offset: 3px;
-   }
-   img { max-width: 100%; height: auto; }
-
-   .site-nav { display: flex; flex-wrap: wrap; justify-content: center; column-gap: 1.25em; padding: 8px 0; margin-bottom: 1em; }
-   </style>
+   <link rel="stylesheet" href="/style.css">
 <script>
   window.MathJax = {
     tex: {
@@ -264,17 +242,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4845fee">Scenario</a></li>
-<li><a href="#orgcb746b7">Intuition</a></li>
-<li><a href="#orgea927d6">First-Price Sealed-Bid Reverse Auction</a></li>
-<li><a href="#org87614d6">Satisfaction Guarantees</a>
+<li><a href="#orgd480529">Scenario</a></li>
+<li><a href="#org14a5a53">Intuition</a></li>
+<li><a href="#org65c028b">First-Price Sealed-Bid Reverse Auction</a></li>
+<li><a href="#org3b0aa30">Satisfaction Guarantees</a>
 <ul>
-<li><a href="#orgf630b77">Hostel-Goer</a></li>
-<li><a href="#org7db4ca2">Hotel-Stayers</a></li>
+<li><a href="#org405cb16">Hostel-Goer</a></li>
+<li><a href="#org6dadaad">Hotel-Stayers</a></li>
 </ul>
 </li>
-<li><a href="#orgc03f645">Incentive Compatibility</a></li>
-<li><a href="#org5677ffc">Practicality</a></li>
+<li><a href="#org5464e7d">Incentive Compatibility</a></li>
+<li><a href="#orgba91ae4">Practicality</a></li>
 </ul>
 </div>
 </div>
@@ -282,18 +260,18 @@
 I recently faced a dilemma with a group of friends in which <a href="https://en.wikipedia.org/wiki/Auction_theory">auction theory</a> provided a nice solution to ensure everyone's satisfaction. Due to its elegance and potential application to similar coordination problems, I detail the solution below as well as some intuition for why it works.
 </p>
 
-<div id="outline-container-org4845fee" class="outline-2">
-<h2 id="org4845fee">Scenario</h2>
-<div class="outline-text-2" id="text-org4845fee">
+<div id="outline-container-orgd480529" class="outline-2">
+<h2 id="orgd480529">Scenario</h2>
+<div class="outline-text-2" id="text-orgd480529">
 <p>
 You and \(n-1\) friends are traveling to Spain next week. Due to unforeseen circumstances, the hotel is booked for only \(n-1\) people, hence one person must find other housing. However, because of the short-term notice as well as money constraints, the only option is a hostel where that person must live with others they do not know. No one in the group is eager to live in the hostel as the hotel is particularly nice. How can we fairly pick the hostel-goer?
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgcb746b7" class="outline-2">
-<h2 id="orgcb746b7">Intuition</h2>
-<div class="outline-text-2" id="text-orgcb746b7">
+<div id="outline-container-org14a5a53" class="outline-2">
+<h2 id="org14a5a53">Intuition</h2>
+<div class="outline-text-2" id="text-org14a5a53">
 <p>
 If asked to perform something unpleasant, every person has a minimum amount of compensation they would want in order to perform said task. Thus, we can think to solve the dilemma by providing money to the hostel-goer as consolation. Under this framework, we must decide who is picked to be the hostel-goer and how much compensation they should receive while respecting everyone's interests. A flawed system would allow the hostel-goer to demand compensation exceeding what hotel-stayers are willing to pay.
 </p>
@@ -308,9 +286,9 @@ The high-level idea is to pick the hostel-goer through some reverse auction syst
 </div>
 </div>
 
-<div id="outline-container-orgea927d6" class="outline-2">
-<h2 id="orgea927d6">First-Price Sealed-Bid Reverse Auction</h2>
-<div class="outline-text-2" id="text-orgea927d6">
+<div id="outline-container-org65c028b" class="outline-2">
+<h2 id="org65c028b">First-Price Sealed-Bid Reverse Auction</h2>
+<div class="outline-text-2" id="text-org65c028b">
 <p>
 The reverse auction can be executed via a first-price sealed-bid reverse auction. Essentially, every person in the group writes the <i>minimum compensation they need to stay in the hostel</i> on a paper slip. This slip is their bid to sell their right to the hotel. Every person submits their slip to a box, while keeping their bid hidden. After everyone submits their bid, the slips are inspected to determine the lowest bidder. The lowest bidder is deemed the hostel-goer, and the remaining \(n - 1\) group evenly splits paying the hostel-goer's compensation.
 </p>
@@ -321,26 +299,26 @@ A digression: depending on the group of people, the minimum compensation may be 
 </div>
 </div>
 
-<div id="outline-container-org87614d6" class="outline-2">
-<h2 id="org87614d6">Satisfaction Guarantees</h2>
-<div class="outline-text-2" id="text-org87614d6">
+<div id="outline-container-org3b0aa30" class="outline-2">
+<h2 id="org3b0aa30">Satisfaction Guarantees</h2>
+<div class="outline-text-2" id="text-org3b0aa30">
 <p>
 Assuming that everyone is truthful in bidding, the above system can be shown to be "satisfying" in that every person is satisfied at the end. We can inspect the satisfaction of every person at the end of the auction.
 </p>
 </div>
 
-<div id="outline-container-orgf630b77" class="outline-3">
-<h3 id="orgf630b77">Hostel-Goer</h3>
-<div class="outline-text-3" id="text-orgf630b77">
+<div id="outline-container-org405cb16" class="outline-3">
+<h3 id="org405cb16">Hostel-Goer</h3>
+<div class="outline-text-3" id="text-org405cb16">
 <p>
 The hostel-goer is satisfied. Yes, they must live in the hostel, but they are receiving the minimum compensation they asked for to live in the hostel. If they feel unsatisfied, then the compensation they wrote on the slip does not match their true desired compensation.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org7db4ca2" class="outline-3">
-<h3 id="org7db4ca2">Hotel-Stayers</h3>
-<div class="outline-text-3" id="text-org7db4ca2">
+<div id="outline-container-org6dadaad" class="outline-3">
+<h3 id="org6dadaad">Hotel-Stayers</h3>
+<div class="outline-text-3" id="text-org6dadaad">
 <p>
 Every hotel-stayer is satisfied, assuming they are fair. A fair person who would need \(x\) dollars to stay in the hostel should understand why the hostel-goer needs \(y\) dollars to stay in the hotel, where \(y < x\). If not, then this person is unfair; they expect different standards between themself and the hostel-goer. Thus, assuming fairness, every hotel-stayer should be satisfied in paying \(y / (n - 1) < x\) dollars to the hostel-goer.
 </p>
@@ -348,9 +326,9 @@ Every hotel-stayer is satisfied, assuming they are fair. A fair person who would
 </div>
 </div>
 
-<div id="outline-container-orgc03f645" class="outline-2">
-<h2 id="orgc03f645">Incentive Compatibility</h2>
-<div class="outline-text-2" id="text-orgc03f645">
+<div id="outline-container-org5464e7d" class="outline-2">
+<h2 id="org5464e7d">Incentive Compatibility</h2>
+<div class="outline-text-2" id="text-org5464e7d">
 <p>
 As with all first-price auctions, the above mechanism is unfortunately not incentive compatible, meaning that people are not incentivized to bid their true value. Instead, group members are incentivized to "shade upwards," in which they bid higher than their true desired compensation in an attempt to increase their payout, if they were the lowest bidder.
 </p>
@@ -373,9 +351,9 @@ Unfortunately, creating an incentive compatible mechanism is quite difficult and
 </div>
 </div>
 
-<div id="outline-container-org5677ffc" class="outline-2">
-<h2 id="org5677ffc">Practicality</h2>
-<div class="outline-text-2" id="text-org5677ffc">
+<div id="outline-container-orgba91ae4" class="outline-2">
+<h2 id="orgba91ae4">Practicality</h2>
+<div class="outline-text-2" id="text-orgba91ae4">
 <p>
 Auctions only work if everyone is familiar with the rules. Hence, if you were to actually employ this in some real-life scenario, I highly recommend you outline the exact rules of the auction in your initial proposal. Otherwise, people won't properly bid and the resulting allocation is inefficient. The above analysis also assumes that everyone is rational, thus it's a good idea to give some time to people to think about their decision and the rules of the auction rather than rush them.
 </p>
